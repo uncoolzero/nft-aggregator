@@ -22,7 +22,7 @@ export default function Home() {
       
       <main className="px-6 flex flex-col gap-y-16 z-10">
 
-        <h1 className="font-bold text-4xl py-8 z-10">
+        <h1 className="font-bold text-5xl py-8 z-10">
           <div className="drop-shadow-[0_1px_1px_rgba(0,0,0,1)]">Explore and discover NFTs across the top marketplaces</div>
         </h1>
 
