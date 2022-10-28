@@ -1,8 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect, useState } from 'react';
+import Trending from '../components/Trending';
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+interface Propping {
+  trends: Array<{name: string; image: string}>
+}
+
+export default function Home({trends}: Propping) {
+  console.log("props?", trends)
   return (
     <div>
       <Head>
@@ -20,16 +27,14 @@ export default function Home() {
       <div className="fixed left-0 right-0 top-0 bottom-0 bg-gradient-to-b from-slate-900 to-black">
       </div>
       
-      <main className="px-6 flex flex-col gap-y-16 z-10">
+      <main className="px-6 flex flex-col gap-y-12 z-10">
 
-        <h1 className="font-bold text-5xl py-8 z-10">
-          <div className="drop-shadow-[0_1px_1px_rgba(0,0,0,1)]">Explore and discover NFTs across the top marketplaces</div>
+        <h1 className="font-bold text-5xl pt-6 z-10">
+          <div className="text-center drop-shadow-[0_1px_1px_rgba(0,0,0,1)]">Explore and discover NFTs</div>
         </h1>
 
         <h2 className="font-semibold text-lg z-10">
-          Trending collections
-          <div className="border-white border rounded-md w-full h-64 animate-pulse bg-neutral-400 z-10">
-          </div>
+          <Trending trends={trends} />
         </h2>
         
         <div className="rounded-md bg-yellow-500 p-2 text-black w-10/12 self-center z-10">
@@ -65,4 +70,43 @@ export default function Home() {
 
     </div>
   )
+}
+
+export const getServerSideProps = async() => {
+
+  var addresses = []
+  var trends = []
+
+  const res = await fetch(`https://api.looksrare.org/api/v1/collections/listing-rewards`);
+  const data = await res.json();
+  
+  if (data)
+  {
+    console.log(data)
+    for (let i = 0; i < data.data.length; i++)
+    {
+      addresses.push(data.data[i].collection.address)
+    }
+
+  }
+  
+  
+  for (let i = 0; i < addresses.length; i++)
+  {
+    const res = await fetch(`https://api.looksrare.org/api/v1/tokens?collection=${addresses[i]}&tokenId=1`);
+    const tokenData = await res.json();
+
+    var info = {
+      name: tokenData.data.collection.name,
+      image: tokenData.data.imageURI,
+    }
+  
+    trends.push(info)
+  }
+  
+  return {
+    props: {
+      trends
+    }
+  }
 }
