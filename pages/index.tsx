@@ -3,13 +3,22 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import Trending from '../components/Trending';
 import styles from '../styles/Home.module.css'
+import looksrareTrending from '../services/looksrare'
+import openseaTrending from '../services/opensea'
 
 interface Propping {
-  trends: Array<{name: string; image: string}>
+  trends: Array<{
+    name: string;
+    id: string;
+    image: string;
+    totalSupply: number;
+    floorPrice: string;
+    floorChange24h: number;
+    dailyTradeVolumeETH: string;
+    dailyTradedItemCount: number;}>
 }
 
 export default function Home({trends}: Propping) {
-  console.log("props?", trends)
   return (
     <div>
       <Head>
@@ -74,36 +83,8 @@ export default function Home({trends}: Propping) {
 
 export const getServerSideProps = async() => {
 
-  var addresses = []
-  var trends = []
+  const trends = await looksrareTrending()
 
-  const res = await fetch(`https://api.looksrare.org/api/v1/collections/listing-rewards`);
-  const data = await res.json();
-  
-  if (data)
-  {
-    console.log(data)
-    for (let i = 0; i < data.data.length; i++)
-    {
-      addresses.push(data.data[i].collection.address)
-    }
-
-  }
-  
-  
-  for (let i = 0; i < addresses.length; i++)
-  {
-    const res = await fetch(`https://api.looksrare.org/api/v1/tokens?collection=${addresses[i]}&tokenId=1`);
-    const tokenData = await res.json();
-
-    var info = {
-      name: tokenData.data.collection.name,
-      image: tokenData.data.imageURI,
-    }
-  
-    trends.push(info)
-  }
-  
   return {
     props: {
       trends
