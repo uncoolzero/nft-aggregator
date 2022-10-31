@@ -6,7 +6,8 @@ import styles from '../styles/Home.module.css'
 import looksrareTrending from '../services/looksrare'
 import openseaTrending from '../services/opensea'
 import TrendingTable from '../components/TrendingTable'
-import { FaRedditAlien, FaTwitter, FaDiscord } from "react-icons/fa"
+import { FaSearch, FaRedditAlien, FaTwitter, FaDiscord } from "react-icons/fa"
+import { HiMenu } from "react-icons/hi"
 
 interface Propping {
   trends: Array<{
@@ -30,9 +31,9 @@ export default function Home({trends}: Propping) {
       </Head>
 
       <header className="bg-[#0d1525] sticky top-0 z-20 w-full px-6 py-4 font-bold text-lg gap-x-3 flex flex-row">
-        <div className="basis-full">NFTSITE</div>
-        <div>Search</div>
-        <div>Menu</div>
+        <div className="basis-full place-self-center">NFTSITE</div>
+        <div className="text-2xl place-self-center"><FaSearch /></div>
+        <div className="text-3xl place-self-center"><HiMenu /></div>
       </header>
 
       <div className="fixed left-0 right-0 top-0 bottom-0 bg-gradient-to-b from-slate-900 to-black">
@@ -54,16 +55,16 @@ export default function Home({trends}: Propping) {
           <TrendingTable trends={trends} />
         </h3>
         
-        <div className="rounded-md bg-yellow-500 p-2 text-black w-10/12 self-center z-10">
+        <div className="rounded-md bg-slate-600/20 p-2 text-white shadow-md w-10/12 self-center z-10">
           <div className="flex items-center justify-center">Explore all collections</div>
         </div>
 
-        <div className="bg-yellow-500 pb-4 rounded-md z-10">
+        <div className="bg-slate-600/20 pb-4 rounded-md shadow-md z-10">
           <div className="font-semibold flex justify-center items-center pt-2 pb-4">Join the community</div>
           <div className="flex flex-row justify-evenly">
-            <div className="p-2 text-4xl rounded-md bg-[#5865F2]"><FaDiscord /></div>
-            <div className="p-2 text-4xl rounded-md bg-blue-500"><FaTwitter /></div>
-            <div className="p-2 text-4xl rounded-md bg-orange-500"><FaRedditAlien /></div>
+            <div className="p-2 text-4xl rounded-md bg-[#5865F2] shadow-md"><FaDiscord /></div>
+            <div className="p-2 text-4xl rounded-md bg-blue-500 shadow-md"><FaTwitter /></div>
+            <div className="p-2 text-4xl rounded-md bg-orange-500 shadow-md"><FaRedditAlien /></div>
           </div>
         </div>
 
