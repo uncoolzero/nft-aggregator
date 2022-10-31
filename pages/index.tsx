@@ -5,6 +5,8 @@ import Trending from '../components/Trending';
 import styles from '../styles/Home.module.css'
 import looksrareTrending from '../services/looksrare'
 import openseaTrending from '../services/opensea'
+import TrendingTable from '../components/TrendingTable'
+import { FaRedditAlien, FaTwitter, FaDiscord } from "react-icons/fa"
 
 interface Propping {
   trends: Array<{
@@ -45,6 +47,12 @@ export default function Home({trends}: Propping) {
         <h2 className="font-semibold text-lg z-10">
           <Trending trends={trends} />
         </h2>
+
+        <div className="z-10 flex font-bold text-xl justify-center">Now Trending</div>
+
+        <h3 className="z-10">
+          <TrendingTable trends={trends} />
+        </h3>
         
         <div className="rounded-md bg-yellow-500 p-2 text-black w-10/12 self-center z-10">
           <div className="flex items-center justify-center">Explore all collections</div>
@@ -53,9 +61,9 @@ export default function Home({trends}: Propping) {
         <div className="bg-yellow-500 pb-4 rounded-md z-10">
           <div className="font-semibold flex justify-center items-center pt-2 pb-4">Join the community</div>
           <div className="flex flex-row justify-evenly">
-            <div className="p-4 rounded-md bg-purple-400">Discord</div>
-            <div className="p-4 rounded-md bg-blue-500">Twitter</div>
-            <div className="p-4 rounded-md bg-orange-500">Reddit</div>
+            <div className="p-2 text-4xl rounded-md bg-[#5865F2]"><FaDiscord /></div>
+            <div className="p-2 text-4xl rounded-md bg-blue-500"><FaTwitter /></div>
+            <div className="p-2 text-4xl rounded-md bg-orange-500"><FaRedditAlien /></div>
           </div>
         </div>
 

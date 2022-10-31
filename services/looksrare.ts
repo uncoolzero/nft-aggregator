@@ -69,7 +69,7 @@ export default async function looksrareTrending()
         else
         {
             floorValueRaw = BigNumber.from(collectionStats.data.floorPrice)
-            floorValueFixed = ethers.utils.formatEther(floorValueRaw)
+            floorValueFixed = (+Number(ethers.utils.formatEther(floorValueRaw)).toFixed(4)).toString()
         }
         
         trending[i] = {
