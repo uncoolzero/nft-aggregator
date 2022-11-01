@@ -5,6 +5,9 @@ interface Props {
     name: string;
     id: string;
     image: string;
+    thumbnail?: string;
+    banner?: string;
+    description?: string;
     totalSupply: number;
     floorPrice: string;
     floorChange24h: number;
@@ -37,6 +40,24 @@ else {
 
 }
 
+function ThumbnailImage({trends}: Props) {
+    //@ts-ignore
+    if (trends.thumbnail)
+    {
+        return (
+            //@ts-ignore
+            <div className="w-12 aspect-square rounded-md bg-origin-border bg-no-repeat transition-all bg-center border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.thumbnail})`}} />
+        )
+    }
+    else
+    {
+        return (
+            //@ts-ignore
+            <div className="w-12 aspect-square rounded-md bg-origin-border bg-no-repeat transition-all bg-center border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.image})`}} />
+        )
+    }
+}
+
 function TrendingTable({trends}: Props) {
 
     return (
@@ -47,7 +68,10 @@ function TrendingTable({trends}: Props) {
         </div>         
         {trends.map((trends) => 
             <div className="text-xs flex w-full pb-2 border-b border-white/20">
-                <div><div className="w-12 aspect-square rounded-md bg-origin-border bg-no-repeat transition-all bg-center border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.image})`}} /></div>
+                <div>
+                    {/*@ts-ignore*/}
+                    <ThumbnailImage trends={trends}/>
+                </div>
                 <div className="pl-2 place-self-center flex flex-col text-ellipsis truncate grow">
                     <div className="text-base font-bold text-ellipsis truncate">{trends.name}</div>
                     <div className="flex space-x-1 text-neutral-400"> 

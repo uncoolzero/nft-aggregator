@@ -1,12 +1,9 @@
 import { request, gql } from "graphql-request"
 import { BigNumber, ethers } from "ethers"
 import timestamp from "../services/timestamp"
+import getRandomInt from "../services/getrandomint"
 
 const apiAddress = "https://api.thegraph.com/subgraphs/name/messari/looksrare-ethereum"
-
-function getRandomInt(max: number) {
-    return Math.floor((Math.random() * max) + 1)
-}
 
 function filterZeroFloorAndImages(item: any) {
     if (item.floorPrice === "0" || item.image === "")

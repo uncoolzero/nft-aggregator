@@ -5,6 +5,9 @@ interface Props {
     name: string;
     id: string;
     image: string;
+    thumbnail?: string;
+    banner?: string;
+    description?: string;
     totalSupply: number;
     floorPrice: string;
     floorChange24h: number;

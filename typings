@@ -1,0 +1,14 @@
+export interface Trends{
+  trends: Array<{
+    name: string;
+    id: string;
+    image: string;
+    thumbnail?: string;
+    banner?: string;
+    description?: string;
+    totalSupply: number;
+    floorPrice: string;
+    floorChange24h: number;
+    dailyTradeVolumeETH: string;
+    dailyTradedItemCount: number;}>
+}

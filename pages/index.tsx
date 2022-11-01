@@ -14,6 +14,9 @@ interface Propping {
     name: string;
     id: string;
     image: string;
+    thumbnail?: string;
+    banner?: string;
+    description?: string;
     totalSupply: number;
     floorPrice: string;
     floorChange24h: number;
@@ -92,7 +95,7 @@ export default function Home({trends}: Propping) {
 
 export const getServerSideProps = async() => {
 
-  const trends = await looksrareTrending()
+  const trends = await openseaTrending()
 
   return {
     props: {

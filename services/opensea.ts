@@ -1,54 +1,111 @@
 import { request, gql } from "graphql-request"
 import { BigNumber, ethers } from "ethers"
+import timestamp from "../services/timestamp"
+import getRandomInt from "../services/getrandomint"
+import { Description } from "@ethersproject/properties"
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 
 const apiAddress = "https://api.thegraph.com/subgraphs/name/messari/opensea-seaport-ethereum"
 
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+const options = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: API_KEY
+  }
+};
+
 export default async function openseaTrending()
 {
+    var time = timestamp()
+
     const trendingQuery = gql 
     `
     {
-        collectionDailySnapshots(
-          first: 10
-          orderBy: dailyTradeVolumeETH
-          orderDirection: desc
-          where: {timestamp_gte: "1666946999", royaltyFee_gt: "0"}
-        ) {
-          id
-          dailyTradeVolumeETH
-          dailyTradedItemCount
+      collectionDailySnapshots(
+        first: 10
+        orderBy: dailyTradeVolumeETH
+        orderDirection: desc
+        where: {timestamp_gte: "${time}", royaltyFee_gt: "0"}
+      ) {
+        id
+        dailyTradeVolumeETH
+        dailyTradedItemCount
+        collection {
+          name
+          nftStandard
+          symbol
+          sellerCount
+          trades(first: 10, orderBy: timestamp, orderDirection: desc) {
+            tokenId
+            priceETH
+          }
         }
       }
+    }
     `
 
     const dailySnapshot = await request(apiAddress, trendingQuery)
     
     const trending = dailySnapshot.collectionDailySnapshots
 
+    console.log(trending)
+
+    const formattedTrending = []
+
     for (let i = 0; i < trending.length; i++) 
     {
 
         trending[i].id = trending[i].id.substring(0, 42)
 
-        var collectionInfo = await (await fetch(`https://api.opensea.io/api/v1/asset_contract/${trending[i].id}?format=json`)).json()
+        await delay(2000)
+        //@ts-ignore
+        var collectionInfo = await(await fetch(`https://api.nftport.xyz/v0/nfts/${trending[i].id}/${trending[i].collection.trades[getRandomInt(9)].tokenId}?chain=ethereum`, options)).json()
+        var getNameFromLooksrare = await(await fetch(`https://api.looksrare.org/api/v1/collections?address=${trending[i].id}`)).json()
 
-        var slug = collectionInfo.collection.slug
-
-        var collectionData = await (await fetch(`https://api.opensea.io/api/v1/collection/${slug}?format=json`)).json()
-
-        trending[i] = {
-            name: collectionInfo.collection.name,
+        console.log(getNameFromLooksrare)
+        if (collectionInfo.contract.metadata)
+        {
+          trending[i] = {
+              name: getNameFromLooksrare.data.name,
+              id: trending[i].id,
+              image: collectionInfo.nft.cached_file_url,
+              thumbnail: collectionInfo.contract.metadata.cached_thumbnail_url,
+              banner: collectionInfo.contract.metadata.cached_banner_url,
+              description: getNameFromLooksrare.data.description,
+              totalSupply: "1",
+              floorPrice: trending[i].collection.trades[0].priceETH,
+              floorChange24h: "0",
+              dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
+              dailyTradedItemCount: trending[i].dailyTradedItemCount,
+          }
+        }
+        else
+        {
+          trending[i] = {
+            name: getNameFromLooksrare.data.name,
             id: trending[i].id,
-            image: collectionInfo.collection.featured_image_url,
-            totalSupply: collectionData.collection.stats.total_supply,
-            floorPrice: collectionData.collection.stats.floor_price,
-            floorChange24h: collectionData.collection.stats.one_day_change,
+            image: collectionInfo.nft.cached_file_url,
+            thumbnail: "",
+            banner: "",
+            description: getNameFromLooksrare.data.description,
+            totalSupply: "1",
+            floorPrice: trending[i].collection.trades[0].priceETH,
+            floorChange24h: "0",
             dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
             dailyTradedItemCount: trending[i].dailyTradedItemCount,
         }
+        }
+
+        console.log(trending[i])
+
+        
 
     }
 
+    console.log(trending)
 
     return trending
     
