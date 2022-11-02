@@ -33,16 +33,19 @@ export default function Home({trends}: Propping) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="bg-[#0d1525] sticky top-0 z-20 w-full px-6 py-4 font-bold text-lg gap-x-3 flex flex-row">
-        <div className="basis-full place-self-center">NFTSITE</div>
-        <div className="text-2xl place-self-center"><FaSearch /></div>
-        <div className="text-3xl place-self-center"><HiMenu /></div>
+      <header className="bg-[#0d1525]/90 backdrop-blur-xl sticky top-0 z-20 w-full px-6 py-4 font-bold text-lg gap-x-3 flex flex-row md:py-6">
+        <div className="basis-full place-self-center md:text-xl md:basis-1">NFTSITE</div>
+        <div className="text-2xl place-self-center md:place-items-center md:flex md:text-3xl md:text-neutral-400 md:basis-full md:mx-4 md:bg-slate-800 md:rounded-md md:pl-3 md:py-3">
+          <FaSearch />
+          <div className="hidden md:flex text-neutral-500 font-normal text-2xl pl-2 place-self-center">Search items and collections</div>
+        </div>
+        <div className="text-3xl place-self-center md:text-4xl"><HiMenu /></div>
       </header>
 
       <div className="fixed left-0 right-0 top-0 bottom-0 bg-gradient-to-b from-slate-900 to-black">
       </div>
       
-      <main className="px-6 flex flex-col gap-y-12 z-10">
+      <main className="px-6 flex flex-col gap-y-12 md:text-xl z-10">
 
         <h1 className="font-bold text-5xl pt-6 z-10">
           <div className="text-center drop-shadow-[0_1px_1px_rgba(0,0,0,1)]">Explore and discover NFTs</div>
@@ -52,7 +55,7 @@ export default function Home({trends}: Propping) {
           <Trending trends={trends} />
         </h2>
 
-        <div className="z-10 flex font-bold text-xl justify-center">Now Trending</div>
+        <div className="z-10 flex font-bold text-xl md:text-2xl justify-center">Now Trending</div>
 
         <h3 className="z-10">
           <TrendingTable trends={trends} />
@@ -65,9 +68,9 @@ export default function Home({trends}: Propping) {
         <div className="bg-slate-600/20 pb-4 rounded-md shadow-md z-10">
           <div className="font-semibold flex justify-center items-center pt-2 pb-4">Join the community</div>
           <div className="flex flex-row justify-evenly">
-            <div className="p-2 text-4xl rounded-md bg-[#5865F2] shadow-md"><FaDiscord /></div>
-            <div className="p-2 text-4xl rounded-md bg-blue-500 shadow-md"><FaTwitter /></div>
-            <div className="p-2 text-4xl rounded-md bg-orange-500 shadow-md"><FaRedditAlien /></div>
+            <div className="p-2 text-4xl md:text-5xl rounded-md bg-[#5865F2] shadow-md"><FaDiscord /></div>
+            <div className="p-2 text-4xl md:text-5xl rounded-md bg-blue-500 shadow-md"><FaTwitter /></div>
+            <div className="p-2 text-4xl md:text-5xl rounded-md bg-orange-500 shadow-md"><FaRedditAlien /></div>
           </div>
         </div>
 
