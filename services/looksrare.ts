@@ -32,7 +32,7 @@ export default async function looksrareTrending()
             dailyTradeVolumeETH
             dailyTradedItemCount
             collection {
-              trades {
+            trades(first: 10, orderBy: timestamp, orderDirection: desc) {
                 tokenId
               }
             }
@@ -53,7 +53,7 @@ export default async function looksrareTrending()
 
         var collectionInfo = await (await fetch(`https://api.looksrare.org/api/v1/collections?address=${trending[i].id}`)).json()
         var collectionStats = await (await fetch(`https://api.looksrare.org/api/v1/collections/stats?address=${trending[i].id}`)).json();
-        var collectionImage = await (await fetch(`https://api.looksrare.org/api/v1/tokens?collection=${trending[i].id}&tokenId=${trending[i].collection.trades[getRandomInt(trending[i].collection.trades.length)].tokenId}`)).json()
+        var collectionImage = await (await fetch(`https://api.looksrare.org/api/v1/tokens?collection=${trending[i].id}&tokenId=${trending[i].collection.trades[getRandomInt(9)].tokenId}`)).json()
 
         var floorValueRaw
         var floorValueFixed
@@ -68,77 +68,20 @@ export default async function looksrareTrending()
             floorValueFixed = (+Number(ethers.utils.formatEther(floorValueRaw)).toFixed(4)).toString()
         }
 
-        var idAlreadyExists = false
 
-
-        //GraphQL can return multiple entries for the same collection, this checks if we already got this collection's info,
-        //and if it is newer than what's already stored.
-        if (i > 0)
-        {
-            for (let u = 0; u < formattedTrending.length; u++)
-            {
-                //@ts-ignore
-                if (trending[i].id === formattedTrending[u].id)
-                {
-                    //@ts-ignore
-                    if (formattedTrending[u].dateStamp < dateStamp)
-                    {
-                        formattedTrending[u] = {
-                            name: collectionInfo.data.name,
-                            id: trending[i].id,
-                            dateStamp: dateStamp,
-                            image: collectionImage.data.imageURI,
-                            totalSupply: collectionStats.data.totalSupply,
-                            floorPrice: floorValueFixed,
-                            floorChange24h: collectionStats.data.floorChange24h,
-                            dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
-                            dailyTradedItemCount: trending[i].dailyTradedItemCount,
-                        }
-
-                        idAlreadyExists = true
-
-                        break
-                    }
-                    else
-                    {
-                        formattedTrending.push({
-                            name: collectionInfo.data.name,
-                            id: trending[i].id,
-                            dateStamp: dateStamp,
-                            image: collectionImage.data.imageURI,
-                            totalSupply: collectionStats.data.totalSupply,
-                            floorPrice: floorValueFixed,
-                            floorChange24h: collectionStats.data.floorChange24h,
-                            dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
-                            dailyTradedItemCount: trending[i].dailyTradedItemCount,
-                        })
-
-                        idAlreadyExists = true
-
-                        break
-                    }
-                }
-            }
-        }
-
-        if (!idAlreadyExists)
-        {
-            formattedTrending.push({
-                name: collectionInfo.data.name,
-                id: trending[i].id,
-                dateStamp: dateStamp,
-                image: collectionImage.data.imageURI,
-                totalSupply: collectionStats.data.totalSupply,
-                floorPrice: floorValueFixed,
-                floorChange24h: collectionStats.data.floorChange24h,
-                dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
-                dailyTradedItemCount: trending[i].dailyTradedItemCount,
-            })
-        }
+        formattedTrending.push({
+            name: collectionInfo.data.name,
+            id: trending[i].id,
+            dateStamp: dateStamp,
+            image: collectionImage.data.imageURI,
+            totalSupply: collectionStats.data.totalSupply,
+            floorPrice: floorValueFixed,
+            floorChange24h: collectionStats.data.floorChange24h,
+            dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
+            dailyTradedItemCount: trending[i].dailyTradedItemCount,
+        })
 
     }
-
-    console.log(formattedTrending)
 
     const filteredTrending = formattedTrending.filter(filterZeroFloorAndImages)
     

@@ -3,8 +3,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import Trending from '../components/Trending';
 import styles from '../styles/Home.module.css'
-import looksrareTrending from '../services/looksrare'
-import openseaTrending from '../services/opensea'
+import getMainPageData from '../services/getMainPageData';
 import TrendingTable from '../components/TrendingTable'
 import { FaSearch, FaRedditAlien, FaTwitter, FaDiscord } from "react-icons/fa"
 import { HiMenu } from "react-icons/hi"
@@ -13,6 +12,7 @@ interface Propping {
   trends: Array<{
     name: string;
     id: string;
+    dateStamp: string;
     image: string;
     thumbnail?: string;
     banner?: string;
@@ -95,7 +95,7 @@ export default function Home({trends}: Propping) {
 
 export const getServerSideProps = async() => {
 
-  const trends = await openseaTrending()
+  const trends = await getMainPageData()
 
   return {
     props: {

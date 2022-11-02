@@ -66,8 +66,9 @@ function TrendingTable({trends}: Props) {
                 <div className="place-self-center">Collection</div>
                 <div className="place-self-center">Volume</div>
         </div>         
-        {trends.map((trends) => 
-            <div className="text-xs flex w-full pb-2 border-b border-white/20">
+        {trends.map((trends, index) => 
+            index < 5 && (
+            <div key={trends.id} className="text-xs flex w-full pb-2 border-b border-white/20">
                 <div>
                     {/*@ts-ignore*/}
                     <ThumbnailImage trends={trends}/>
@@ -81,9 +82,9 @@ function TrendingTable({trends}: Props) {
                         <FloorChange trends={trends}/> 
                     </div>
                 </div>
-                <div className="place-self-center shrink-0 font-bold">{Number(trends.dailyTradeVolumeETH).toFixed(1)} ETH</div>
+                <div className="place-self-center shrink-0 font-bold text-xl">{Number(trends.dailyTradeVolumeETH).toFixed(1)} ETH</div>
             </div>
-                )}
+                ))}
         </div>
     )
 

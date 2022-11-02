@@ -51,13 +51,12 @@ export default async function openseaTrending()
     
     const trending = dailySnapshot.collectionDailySnapshots
 
-    console.log(trending)
-
     const formattedTrending = []
 
     for (let i = 0; i < trending.length; i++) 
     {
 
+        var dateStamp = trending[i].id.substring(43, trending[i].id.length)
         trending[i].id = trending[i].id.substring(0, 42)
 
         await delay(2000)
@@ -65,12 +64,12 @@ export default async function openseaTrending()
         var collectionInfo = await(await fetch(`https://api.nftport.xyz/v0/nfts/${trending[i].id}/${trending[i].collection.trades[getRandomInt(9)].tokenId}?chain=ethereum`, options)).json()
         var getNameFromLooksrare = await(await fetch(`https://api.looksrare.org/api/v1/collections?address=${trending[i].id}`)).json()
 
-        console.log(getNameFromLooksrare)
         if (collectionInfo.contract.metadata)
         {
           trending[i] = {
               name: getNameFromLooksrare.data.name,
               id: trending[i].id,
+              dateStamp: dateStamp,
               image: collectionInfo.nft.cached_file_url,
               thumbnail: collectionInfo.contract.metadata.cached_thumbnail_url,
               banner: collectionInfo.contract.metadata.cached_banner_url,
@@ -87,10 +86,11 @@ export default async function openseaTrending()
           trending[i] = {
             name: getNameFromLooksrare.data.name,
             id: trending[i].id,
+            dateStamp: dateStamp,
             image: collectionInfo.nft.cached_file_url,
             thumbnail: "",
             banner: "",
-            description: getNameFromLooksrare.data.description,
+            description: "",
             totalSupply: "1",
             floorPrice: trending[i].collection.trades[0].priceETH,
             floorChange24h: "0",
@@ -99,13 +99,7 @@ export default async function openseaTrending()
         }
         }
 
-        console.log(trending[i])
-
-        
-
     }
-
-    console.log(trending)
 
     return trending
     
