@@ -55,7 +55,7 @@ export default function Home({trends}: Propping) {
           <Trending trends={trends} />
         </h2>
 
-        <div className="z-10 flex font-bold text-xl md:text-2xl justify-center">Now Trending</div>
+        <div className="z-10 flex font-bold text-xl md:text-2xl lg:text-3xl justify-center">Now Trending</div>
 
         <h3 className="z-10">
           <TrendingTable trends={trends} />

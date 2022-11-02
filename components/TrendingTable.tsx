@@ -46,14 +46,14 @@ function ThumbnailImage({trends}: Props) {
     {
         return (
             //@ts-ignore
-            <div className="w-12 aspect-square rounded-md bg-origin-border bg-no-repeat transition-all bg-center border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.thumbnail})`}} />
+            <div className="w-12 lg:w-16 aspect-square rounded-md bg-origin-border bg-no-repeat transition-all bg-center border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.thumbnail})`}} />
         )
     }
     else
     {
         return (
             //@ts-ignore
-            <div className="w-12 aspect-square rounded-md bg-origin-border bg-no-repeat transition-all bg-center border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.image})`}} />
+            <div className="w-12 lg:w-16 aspect-square rounded-md bg-origin-border bg-no-repeat transition-all bg-center border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.image})`}} />
         )
     }
 }
@@ -97,15 +97,15 @@ function TrendingTable({trends}: Props) {
                     <div className="place-self-center capitalize">VOLUME</div>
             </div>
         {trends.map((trends, index) => 
-            index < 5 && (
+            index < 10 && (
             <div key={trends.id} className="text-xs md:text-sm lg:pt-2 flex w-full pb-2 border-b border-white/20">
                 <div>
                     {/*@ts-ignore*/}
                     <ThumbnailImage trends={trends}/>
                 </div>
                 <div className="pl-2 place-self-center flex flex-col text-ellipsis truncate grow">
-                    <div className="text-base md:text-lg font-bold text-ellipsis truncate">{trends.name}</div>
-                    <div className="flex space-x-1 text-neutral-400"> 
+                    <div className="text-base md:text-lg lg:text-xl font-bold text-ellipsis truncate">{trends.name}</div>
+                    <div className="flex space-x-1 text-neutral-400 lg:text-base"> 
                         <div>Floor:</div>
                         <div className="font-bold">{trends.floorPrice} ETH</div>
                         {/*@ts-ignore */}
@@ -115,25 +115,7 @@ function TrendingTable({trends}: Props) {
                 <div className="place-self-center shrink-0 font-bold text-xl md:text-2xl">{Number(trends.dailyTradeVolumeETH).toFixed(1)} ETH</div>
             </div>
                 ))}
-                {trends.map((trends, index) => 
-            (index > 5 && index < 11) && (
-            <div key={trends.id} className="text-xs md:text-sm lg:pt-2 flex w-full pb-2 border-b border-white/20">
-                <div>
-                    {/*@ts-ignore*/}
-                    <ThumbnailImage trends={trends}/>
-                </div>
-                <div className="pl-2 place-self-center flex flex-col text-ellipsis truncate grow">
-                    <div className="text-base md:text-lg font-bold text-ellipsis truncate">{trends.name}</div>
-                    <div className="flex space-x-1 text-neutral-400"> 
-                        <div>Floor:</div>
-                        <div className="font-bold">{trends.floorPrice} ETH</div>
-                        {/*@ts-ignore */}
-                        <FloorChange trends={trends}/> 
-                    </div>
-                </div>
-                <div className="place-self-center shrink-0 font-bold text-xl md:text-2xl">{Number(trends.dailyTradeVolumeETH).toFixed(1)} ETH</div>
-            </div>
-                ))}
+
         </div>         
         </div>
     )
