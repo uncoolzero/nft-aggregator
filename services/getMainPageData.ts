@@ -7,8 +7,6 @@ export default async function getMainPageData() {
 
     var looksRare = await looksrareTrending()
 
-    console.log(looksRare)
-
     //Removing duplicate LooksRare entries
     for (let i = 0; i < looksRare.length; i++)
     {
@@ -24,11 +22,12 @@ export default async function getMainPageData() {
             {
                 if (looksRare[i].id === combinedList[u].id)
                 {
+                    itemAlreadyExists = !itemAlreadyExists
+
                     if (Number(looksRare[i].dateStamp) > Number(combinedList[u].dateStamp))
                     {
-                        itemAlreadyExists = !itemAlreadyExists
-                        combinedList[u] = looksRare[i]
-                        break
+                        combinedList.splice(u, 1)
+                        combinedList.push(looksRare[i])
                     }
                 }
             }
@@ -36,6 +35,7 @@ export default async function getMainPageData() {
             if (!itemAlreadyExists)
             {
                 combinedList.push(looksRare[i])
+                itemAlreadyExists = false
             }
         }
     }
@@ -51,17 +51,15 @@ export default async function getMainPageData() {
         {
             if (openSea[i].id === combinedList[u].id)
             {
-                console.log("Found repeat - ", combinedList[u].name)
+                itemAlreadyExists = !itemAlreadyExists
+
                 if (Number(openSea[i].dateStamp) === Number(combinedList[u].dateStamp))
                 {
-                    console.log("dateStamp is equal!,", openSea[i].dateStamp, combinedList[u].dateStamp)
-                    
-                    itemAlreadyExists = !itemAlreadyExists
                     
                     combinedList[u].dateStamp = openSea[i].dateStamp
                     combinedList[u].thumbnail = openSea[i].thumbnail
                     combinedList[u].banner = openSea[i].banner
-                    combinedList[u].description = openSea[i].banner
+                    combinedList[u].description = openSea[i].description
                     
                     if (Number(openSea[i].floorPrice) < Number(combinedList[u].floorPrice))
                     {
@@ -71,18 +69,14 @@ export default async function getMainPageData() {
                     combinedList[u].dailyTradeVolumeETH = Number(combinedList[u].dailyTradeVolumeETH) + Number(openSea[i].dailyTradeVolumeETH)
                     combinedList[u].dailyTradedItemCount = Number(combinedList[u].dailyTradedItemCount) + Number(openSea[i].dailyTradedItemCount)
 
-                    break
                 }
                 else if (Number(openSea[i].dateStamp) > Number(combinedList[u].dateStamp))
                 {
-                    console.log("dateStamp is greater!,", openSea[i].dateStamp, combinedList[u].dateStamp)
-                    
-                    itemAlreadyExists = !itemAlreadyExists
                     
                     combinedList[u].dateStamp = openSea[i].dateStamp
                     combinedList[u].thumbnail = openSea[i].thumbnail
                     combinedList[u].banner = openSea[i].banner
-                    combinedList[u].description = openSea[i].banner
+                    combinedList[u].description = openSea[i].description
                     
                     if (Number(openSea[i].floorPrice) < Number(combinedList[u].floorPrice))
                     {
@@ -92,23 +86,27 @@ export default async function getMainPageData() {
                     combinedList[u].dailyTradeVolumeETH = openSea[i].dailyTradeVolumeETH
                     combinedList[u].dailyTradedItemCount = openSea[i].dailyTradedItemCount
 
-                    break
+                }
+                else
+                {
+                    console.log("dateStamp is lower!", openSea[i].dateStamp, combinedList[i].dateStamp)
                 }
             }
         }
 
-        if (!itemAlreadyExists)
+        if (itemAlreadyExists == false)
         {
             console.log("Item doesn't exist, pushing")
             combinedList.push(openSea[i])
+            itemAlreadyExists = false
         }
 
     }
 
-    console.log(combinedList)
-
     //Sorting by ETH trade volume
     combinedList.sort((a, b) => parseFloat(b.dailyTradeVolumeETH) - parseFloat(a.dailyTradeVolumeETH))
+
+
 
     return combinedList
 }

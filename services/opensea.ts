@@ -64,6 +64,8 @@ export default async function openseaTrending()
         var collectionInfo = await(await fetch(`https://api.nftport.xyz/v0/nfts/${trending[i].id}/${trending[i].collection.trades[getRandomInt(9)].tokenId}?chain=ethereum`, options)).json()
         var getNameFromLooksrare = await(await fetch(`https://api.looksrare.org/api/v1/collections?address=${trending[i].id}`)).json()
 
+        var floorPrice = +Number(trending[i].collection.trades[0].priceETH).toFixed(4)
+        
         if (collectionInfo.contract.metadata)
         {
           trending[i] = {
@@ -75,7 +77,7 @@ export default async function openseaTrending()
               banner: collectionInfo.contract.metadata.cached_banner_url,
               description: getNameFromLooksrare.data.description,
               totalSupply: "1",
-              floorPrice: trending[i].collection.trades[0].priceETH,
+              floorPrice: floorPrice,
               floorChange24h: "0",
               dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
               dailyTradedItemCount: trending[i].dailyTradedItemCount,
@@ -88,11 +90,11 @@ export default async function openseaTrending()
             id: trending[i].id,
             dateStamp: dateStamp,
             image: collectionInfo.nft.cached_file_url,
-            thumbnail: "",
-            banner: "",
-            description: "",
+            thumbnail: null,
+            banner: null,
+            description: null,
             totalSupply: "1",
-            floorPrice: trending[i].collection.trades[0].priceETH,
+            floorPrice: floorPrice,
             floorChange24h: "0",
             dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
             dailyTradedItemCount: trending[i].dailyTradedItemCount,

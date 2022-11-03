@@ -96,6 +96,8 @@ function TrendingTable({trends}: Props) {
                     <div className="place-self-center capitalize">COLLECTION</div>
                     <div className="place-self-center capitalize">VOLUME</div>
             </div>
+        </div>
+        <div className="hidden lg:grid lg:grid-rows-5 lg:grid-flow-col lg:gap-x-8 ">
         {trends.map((trends, index) => 
             index < 10 && (
             <div key={trends.id} className="text-xs md:text-sm lg:pt-2 flex w-full pb-2 border-b border-white/20">
@@ -114,7 +116,7 @@ function TrendingTable({trends}: Props) {
                 </div>
                 <div className="place-self-center shrink-0 font-bold text-xl md:text-2xl">{Number(trends.dailyTradeVolumeETH).toFixed(1)} ETH</div>
             </div>
-                ))}
+            ))}
 
         </div>         
         </div>
