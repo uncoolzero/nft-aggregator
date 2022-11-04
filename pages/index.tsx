@@ -7,6 +7,7 @@ import getMainPageData from '../services/getMainPageData';
 import TrendingTable from '../components/TrendingTable'
 import { FaSearch, FaRedditAlien, FaTwitter, FaDiscord } from "react-icons/fa"
 import { HiMenu } from "react-icons/hi"
+import Communities from '../components/Communities';
 
 interface Propping {
   trends: Array<{
@@ -63,6 +64,10 @@ export default function Home({trends}: Propping) {
         
         <div className="rounded-md bg-slate-600/20 p-2 text-white shadow-md w-10/12 self-center z-10">
           <div className="flex items-center justify-center">Explore all collections</div>
+        </div>
+
+        <div className="z-10">
+          <Communities />
         </div>
 
         <div className="bg-slate-600/20 pb-4 rounded-md shadow-md z-10">

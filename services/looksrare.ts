@@ -53,7 +53,7 @@ export default async function looksrareTrending()
 
         var collectionInfo = await (await fetch(`https://api.looksrare.org/api/v1/collections?address=${trending[i].id}`)).json()
         var collectionStats = await (await fetch(`https://api.looksrare.org/api/v1/collections/stats?address=${trending[i].id}`)).json();
-        var collectionImage = await (await fetch(`https://api.looksrare.org/api/v1/tokens?collection=${trending[i].id}&tokenId=${trending[i].collection.trades[getRandomInt(9)].tokenId}`)).json()
+        var collectionImage = await (await fetch(`https://api.looksrare.org/api/v1/tokens?collection=${trending[i].id}&tokenId=${trending[i].collection.trades[0].tokenId}`)).json()
 
         var floorValueRaw
         var floorValueFixed
@@ -78,7 +78,7 @@ export default async function looksrareTrending()
             floorPrice: floorValueFixed,
             floorChange24h: collectionStats.data.floorChange24h,
             dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
-            dailyTradedItemCount: trending[i].dailyTradedItemCount,
+            dailyTradedItemCount: 0,
         })
 
     }
