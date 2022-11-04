@@ -6,8 +6,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'text': 'text 4s ease infinite'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      keyframes: {
+        'text': {
+          '0%': {
+            'filter': 'hue-rotate(0)'
+          },
+          '100%': {
+            'filter': 'hue-rotate(-1turn)'
+          }
+        }
       },
       patterns: {
         opacities: {

@@ -24,7 +24,7 @@ function Trending({trends}: Props) {
     <div className="flex flex-row overflow-x-scroll snap-x snap-mandatory scrollbar-hide">
       {trends.map((trends, index) =>
       index < 8 && (
-      <div id={trends.name} key={trends.id} className="relative min-w-full lg:min-w-[45%] snap-center mx-8 aspect-square rounded-[1.75rem] overflow-hidden border-black/20">
+      <div id={trends.name} key={trends.id} className="relative min-w-full lg:min-w-[45%] xl:min-w-[29%] 2xl:min-w-[23%] snap-center mx-8 2xl:mx-4 aspect-square rounded-[1.75rem] overflow-hidden border-black/20">
         <div className="absolute w-full min-w-full aspect-square rounded-[1.75rem] pointer-events-none bg-gradient-to-b from-transparent via-transparent to-black/40 z-[1]">
           <div className="absolute bottom-4 md:bottom-8 font-bold md:text-4xl lg:text-2xl lg:bottom-6 left-0 pl-4 pb-2 drop-shadow-[0_1px_1px_rgba(0,0,0,1)] z-[2]">
             {trends.name}

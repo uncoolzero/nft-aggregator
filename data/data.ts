@@ -5,7 +5,7 @@ export default [
         volume: 13,
         floorPrice: 9.9,
         image: "https://i.seadn.io/gcs/files/3d0b8225e837f1bcfcae3e93c01b4136.jpg",
-        color: "bg-blue-500"
+        color: "37 99 235"
     },
     {
         name: "DigiDaigaku Genesis",
@@ -13,7 +13,7 @@ export default [
         volume: 9096,
         floorPrice: 12,
         image: "https://i.seadn.io/gcs/files/fe93ea8b5aed4dfcebd9feadc13a8574.png",
-        color: "bg-pink-500"
+        color: "20 184 166"
     },
     {
         name: "RENGA",
@@ -21,7 +21,7 @@ export default [
         volume: 16395,
         floorPrice: 0.95,
         image: "https://i.seadn.io/gcs/files/f3b11e36be14a5d31c75b19d03996fed.gif",
-        color: "rose"
+        color: "244 63 94"
     },
     {
         name: "Quirkies",
@@ -29,7 +29,7 @@ export default [
         volume: 15328,
         floorPrice: 0.87,
         image: "https://i.seadn.io/gae/XS6RqsT7CBpoeX8vUmWkJYldMV6h0Ko7TpagNgFZ-nEh4yrMZFrpY4gtBqyuRDJV6mx2B0ssYxoh9Z9XlO770Xe8FNSu-kj-1EVzMQ",
-        color: "teal"
+        color: "6 182 212"
     },
     {
         name: "Wassies by Wassies",
@@ -37,7 +37,7 @@ export default [
         volume: 10122,
         floorPrice: 0.6,
         image: "https://i.seadn.io/gae/ju6vDR0sbEvqT0bAb4QPEzYMzpReEllDZ5MlICtxqJu76G5UrZ0cT-w6X3Mzf9e8KXZXJGNIyXGDRAoL-qlaApiJsj27ZdbOY5VvCA",
-        color: "sky"
+        color: "14 165 233"
     },
     {
         name: "YuGiYn",
@@ -45,6 +45,6 @@ export default [
         volume: 1544,
         floorPrice: 0.335,
         image: "https://i.seadn.io/gcs/files/fb756068f5be3cf135f7c5ef211d08c6.png",
-        color: "yellow"
+        color: "234 179 8"
     },
 ]
