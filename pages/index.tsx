@@ -62,7 +62,7 @@ export default function Home({trends}: Propping) {
           <TrendingTable trends={trends} />
         </h3>
         
-        <div className="rounded-md bg-slate-600/20 p-2 text-white max-w-[50%] shadow-md w-10/12 self-center z-10">
+        <div className="rounded-md bg-slate-600/20 p-2 text-white lg:max-w-[50%] shadow-md w-10/12 self-center z-10">
           <div className="flex items-center justify-center">Explore all collections</div>
         </div>
 

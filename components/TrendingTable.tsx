@@ -81,7 +81,11 @@ function Table({trends}: Props) {
         <div className="grid grid-cols-1 w-full lg:grid-rows-5 lg:grid-cols-2 lg:grid-flow-col lg:gap-x-8 ">      
         {trends.map((trends, index) => 
             index < widthIndex && (
-            <div key={trends.id} className="text-xs md:text-sm flex py-2 border-b border-white/20">
+            <div className="flex">
+                <div className="basis-6 md:basis-8 border-b border-white/20 py-5 md:py-7 self-center font-bold text-neutral-100/50">
+                    {index + 1}
+                </div>
+            <div key={trends.id} className="text-xs md:text-sm flex w-full py-2 border-b border-white/20">
                 <div>
                     {/*@ts-ignore*/}
                     <ThumbnailImage trends={trends}/>
@@ -96,6 +100,7 @@ function Table({trends}: Props) {
                     </div>
                 </div>
                 <div className="place-self-center shrink-0 font-bold text-xl md:text-2xl">{Number(trends.dailyTradeVolumeETH).toFixed(1)} ETH</div>
+            </div>
             </div>
                 ))}
         </div>
