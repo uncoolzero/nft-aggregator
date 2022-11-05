@@ -33,7 +33,7 @@ function Trending({trends}: Props) {
             Floor: {trends.floorPrice} ETH
           </div>
         </div>
-        <div className="relative max-w-full aspect-square border rounded-[1.75rem] bg-origin-border bg-no-repeat transition-all bg-center hover:scale-125 duration-500 ease-in-out border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.image})`}}>
+        <div className="relative max-w-full aspect-square border rounded-[1.75rem] bg-origin-border bg-no-repeat transition-all bg-center hover:scale-110 duration-500 ease-in-out border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.image})`}}>
       </div>
     </div>
     ))}
