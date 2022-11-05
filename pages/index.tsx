@@ -115,7 +115,7 @@ export default function Home({trends}: Propping) {
 }
 
 //@ts-ignore
-export const getStaticProps = async({ req, res }) => {
+export const getServerSideProps = async({ req, res }) => {
 
   res.setHeader(
     'Cache-Control',
