@@ -2,8 +2,8 @@ export default [
     {
         name: "TinyCourses",
         description: "TinyCourses Publisher NFTs are your way of supporting education and bringing academic learning to Web3.",
-        volume: 13,
-        floorPrice: 9.9,
+        volume: 268,
+        floorPrice: 46.9,
         image: "https://i.seadn.io/gcs/files/3d0b8225e837f1bcfcae3e93c01b4136.jpg",
         color: "37 99 235"
     },
