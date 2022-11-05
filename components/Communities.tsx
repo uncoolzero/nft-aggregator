@@ -13,7 +13,7 @@ return(
         <div className="hidden md:flex w-24 -mr-8 rounded-l-lg bg-gradient-to-r z-10 from-slate-800" />
         <div className="flex flex-row overflow-x-scroll scrollbar-hide mx-2 mb-6 pl-4 pr-4 snap-x snap-mandatory gap-x-8 md:gap-x-4 md:pt-6 md:w-[170%] lg:w-[250%]">
         {data.map((data) =>
-            <div className={`min-w-full md:min-w-[47%] lg:min-w-[32%] bg-cover bg-center rounded-lg overflow-clip`} style={{backgroundColor: `rgb(${data.color})`}}>
+            <div key={data.name} className={`min-w-full md:min-w-[47%] lg:min-w-[32%] bg-cover bg-center rounded-lg overflow-clip`} style={{backgroundColor: `rgb(${data.color})`}}>
                     <div className={`px-4 py-4 snap-center rounded-lg`}>
                         <img className="rounded-lg w-full object-cover" src={data.image} />
                         <div className="text-lg text-white font-bold py-2">{data.name}</div>
