@@ -115,12 +115,7 @@ export default function Home({trends}: Propping) {
 }
 
 //@ts-ignore
-export const getServerSideProps = async({ req, res }) => {
-
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=3600, stale-while-revalidate=31536000'
-  )
+export const getStaticProps = async() => {
 
   const trends = await getMainPageData()
 
