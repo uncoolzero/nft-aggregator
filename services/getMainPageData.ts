@@ -1,11 +1,10 @@
-import looksrareTrending from "./looksrare"
-import openseaTrending from "./opensea"
+//@ts-nocheck
 
 export default async function getMainPageData() {
     
     let combinedList = []
 
-    var looksRare = await looksrareTrending()
+    var looksRare = await fetch("/.netlify/functions/looksrare-background")
 
     //Removing duplicate LooksRare entries
     for (let i = 0; i < looksRare.length; i++)
@@ -40,7 +39,7 @@ export default async function getMainPageData() {
         }
     }
 
-    var openSea = await openseaTrending()
+    var openSea = await fetch("/.netlify/functions/opensea-background")
 
     //Merging OpenSea entries with LooksRare entries and removing doubles
     for (let i = 0; i < openSea.length; i++)
