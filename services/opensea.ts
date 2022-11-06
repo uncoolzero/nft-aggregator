@@ -3,7 +3,7 @@ import { BigNumber, ethers } from "ethers"
 import timestamp from "../services/timestamp"
 import getRandomInt from "../services/getrandomint"
 import { Description } from "@ethersproject/properties"
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY
+const API_KEY = process.env.API_KEY
 
 const apiAddress = "https://api.thegraph.com/subgraphs/name/messari/opensea-seaport-ethereum"
 
