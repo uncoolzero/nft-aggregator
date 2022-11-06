@@ -5,7 +5,7 @@ export default async function getMainPageData() {
     
     let combinedList = []
 
-    var looksRare = await looksrareTrending()
+    var looksRare = await openseaTrending()
 
     //Removing duplicate LooksRare entries
     for (let i = 0; i < looksRare.length; i++)
@@ -40,10 +40,10 @@ export default async function getMainPageData() {
         }
     }
 
-    var openSea = await openseaTrending()
+    //var openSea = await openseaTrending()
 
     //Merging OpenSea entries with LooksRare entries and removing doubles
-    for (let i = 0; i < openSea.length; i++)
+    /*for (let i = 0; i < openSea.length; i++)
     {
         var itemAlreadyExists = false
 
@@ -101,7 +101,7 @@ export default async function getMainPageData() {
             itemAlreadyExists = false
         }
 
-    }
+    }*/
 
     //Sorting by ETH trade volume
     combinedList.sort((a, b) => parseFloat(b.dailyTradeVolumeETH) - parseFloat(a.dailyTradeVolumeETH))
