@@ -122,6 +122,7 @@ export const getStaticProps = async() => {
   return {
     props: {
       trends
-    }
+    },
+    revalidate: 3600
   }
 }
