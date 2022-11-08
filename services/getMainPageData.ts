@@ -22,7 +22,7 @@ export default async function getMainPageData() {
             {
                 if (looksRare[i].id === combinedList[u].id)
                 {
-                    itemAlreadyExists = !itemAlreadyExists
+                    itemAlreadyExists = true
 
                     if (Number(looksRare[i].dateStamp) > Number(combinedList[u].dateStamp))
                     {
@@ -39,6 +39,8 @@ export default async function getMainPageData() {
             }
         }
     }
+
+    console.log(combinedList)
 
     //var openSea = await openseaTrending()
 
