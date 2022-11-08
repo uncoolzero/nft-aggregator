@@ -59,7 +59,7 @@ export default async function openseaTrending()
         var dateStamp = trending[i].id.substring(43, trending[i].id.length)
         trending[i].id = trending[i].id.substring(0, 42)
 
-        await delay(100)
+        await delay(300)
         //@ts-ignore
         var collectionInfo = await(await fetch(`https://api.nftport.xyz/v0/nfts/${trending[i].id}/${trending[i].collection.trades[getRandomInt(9)].tokenId}?chain=ethereum`, options)).json()
         var getNameFromLooksrare = await(await fetch(`https://api.looksrare.org/api/v1/collections?address=${trending[i].id}`)).json()
