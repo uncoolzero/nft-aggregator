@@ -3,7 +3,7 @@ import { HiMenu } from "react-icons/hi"
 import { CgProfile } from 'react-icons/cg'
 import { IoWalletOutline } from 'react-icons/io5'
 
-//
+
 function Header() {
 
 return (
