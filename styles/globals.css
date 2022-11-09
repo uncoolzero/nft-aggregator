@@ -28,3 +28,37 @@ a {
     background: black;
   }
 }
+
+@layer components {
+  .search-closed {
+    @apply text-2xl transition-all ease-in-out duration-150 hover:bg-slate-600 focus-within:bg-slate-700 place-self-center place-items-center md:flex md:text-3xl xl:text-xl md:text-neutral-400 md:basis-full md:mx-4 md:bg-slate-800 md:rounded-md md:pl-3 md:py-3 xl:py-1
+  }
+
+  .search-open {
+    @apply text-xl transition-all ease-in-out duration-150 hover:bg-slate-600 focus-within:bg-slate-700 place-self-center place-items-center flex md:flex md:text-3xl xl:text-xl text-neutral-400 bg-slate-800 basis-full md:mx-4 md:bg-slate-800 rounded-md pl-2 md:pl-3 md:py-3 xl:py-1
+  }
+
+  .logo-search-open {
+    @apply hidden md:flex transition-all ease-in-out basis-full place-self-center md:text-xl md:basis-1
+  }
+
+  .logo-search-closed {
+    @apply transition-all ease-in-out basis-full place-self-center md:text-xl md:basis-1
+  }
+
+  .menu-search-open {
+    @apply hidden transition-all ease-in-out text-3xl place-self-center md:flex md:text-4xl xl:hidden lg:pl-4
+  }
+
+  .menu-search-closed {
+    @apply transition-all ease-in-out text-3xl place-self-center md:text-4xl xl:hidden lg:pl-4
+  }
+
+  .input-search-open {
+    @apply focus:outline-none placeholder:bg-transparent bg-transparent md:flex text-neutral-100 font-normal text-lg md:text-2xl pl-2 xl:text-xl place-self-center w-full
+  }
+
+  .input-search-closed {
+    @apply hidden focus:outline-none placeholder:bg-transparent bg-transparent md:flex text-neutral-100 font-normal text-xl md:text-2xl pl-2 xl:text-xl place-self-center w-full
+  }
+}
