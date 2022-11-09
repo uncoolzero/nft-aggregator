@@ -85,7 +85,7 @@ function Table({trends}: Props) {
                 {/*<div className="basis-6 md:basis-8 border-b border-white/20 py-5 md:py-7 self-center font-bold text-neutral-100/50">
                     {index + 1}
             </div>*/}
-            <div key={trends.id} className="text-xs md:text-sm flex w-full py-2 border-b border-white/20 hover:bg-neutral-200/20 transition-all ease-in-out hover:cursor-pointer">
+            <div key={`${trends.id}table`} className="text-xs md:text-sm flex w-full py-2 border-b border-white/20 hover:bg-neutral-200/20 transition-all ease-in-out hover:cursor-pointer">
                 <div>
                     {/*@ts-ignore*/}
                     <ThumbnailImage trends={trends}/>
