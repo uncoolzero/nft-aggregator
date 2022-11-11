@@ -78,7 +78,7 @@ function Header() {
 
 return (
 
-    <header className="bg-[#0d1525]/90 backdrop-blur-xl sticky top-0 dark:backdrop-blur-sm z-20 w-full h-[300%] flex flex-col">
+    <header className="dark:bg-[#0d1525]/90 bg-[#EFF0F3]/90 backdrop-blur-xl sticky top-0 z-20 w-full h-[300%] flex flex-col">
       <div className="px-6 py-4 font-bold text-lg gap-x-3 flex flex-row md:py-6 xl:py-4">
         <div id="logo" className="logo-search-closed">NFTSITE</div>
         <div id="searchbar" className="search-closed">
@@ -91,12 +91,12 @@ return (
           <input id="searchbox" type="text" placeholder='Search items and collections' className="input-search-closed"></input>
         </div>
         <div className="hidden place-items-center lg:flex gap-x-6">
-            <button className="hidden xl:inline-block hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Explore</button>
-            <button className="hidden xl:inline-block hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Stats</button>
-            <button className="hidden xl:inline-block hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Resources</button>
-            <button className="hidden xl:inline-block hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Create</button>
-            <button className="text-4xl xl:text-3xl hover:text-slate-300 rounded-md transition-all ease-in-out"><CgProfile /></button>
-            <button className="text-4xl xl:text-3xl hover:text-slate-300 rounded-md transition-all ease-in-out"><IoWalletOutline /></button>
+            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Explore</button>
+            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Stats</button>
+            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Resources</button>
+            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Create</button>
+            <button className="text-4xl xl:text-3xl hover:bg-slate-700/50 dark:hover:text-slate-300 rounded-md transition-all ease-in-out"><CgProfile /></button>
+            <button className="text-4xl xl:text-3xl hover:bg-slate-700/50 dark:hover:text-slate-300 rounded-md transition-all ease-in-out"><IoWalletOutline /></button>
           </div>
         <div id="hamburgermenu" onClick={toggleMenu} className="menu-search-closed"><HiMenu /></div>
       </div>

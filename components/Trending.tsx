@@ -21,7 +21,7 @@ function Trending({trends}: Props) {
   return (
     //@ts-ignore
 
-    <div className="flex flex-row overflow-x-scroll snap-x snap-mandatory scrollbar-hide">
+    <div className="flex flex-row overflow-x-scroll snap-x snap-mandatory text-white scrollbar-hide">
       {trends.map((trends, index) =>
       index < 8 && (
       <div id={trends.name} key={trends.id} className="relative min-w-full lg:min-w-[45%] xl:min-w-[29%] 2xl:min-w-[23%] snap-center mx-8 2xl:mx-4 aspect-square rounded-[1.75rem] overflow-hidden border-black/20">
@@ -33,7 +33,7 @@ function Trending({trends}: Props) {
             Floor: {trends.floorPrice} ETH
           </div>
         </div>
-        <div className="relative max-w-full aspect-square border rounded-[1.75rem] bg-origin-border bg-no-repeat transition-all bg-center hover:scale-110 duration-500 ease-in-out border-black/20 text-white bg-cover" style={{backgroundImage: `url(${trends.image})`}}>
+        <div className="relative max-w-full aspect-square border rounded-[1.75rem] bg-origin-border bg-no-repeat transition-all bg-center hover:scale-110 duration-500 ease-in-out border-black/20 bg-cover" style={{backgroundImage: `url(${trends.image})`}}>
       </div>
     </div>
     ))}
