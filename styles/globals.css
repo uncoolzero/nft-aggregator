@@ -61,4 +61,40 @@ a {
   .input-search-closed {
     @apply hidden focus:outline-none placeholder:bg-transparent bg-transparent md:flex text-neutral-100 font-normal text-xl md:text-2xl pl-2 xl:text-xl place-self-center w-full
   }
+
+  .menu-on {
+    @apply backdrop-blur-2xl w-[100%] h-[100%] absolute top-16 right-0 z-20 transition-all ease-in-out overflow-y-hidden
+  }
+
+  .menu-off {
+    @apply backdrop-blur-2xl w-[100%] h-[100%] absolute top-16 right-full z-20 transition-all ease-in-out
+  }
+
+  .menu-rows {
+    @apply flex hover:bg-slate-500/20 transition-all ease-in-out px-6
+  }
+
+  .menu-rows-icon {
+    @apply pr-2 place-self-center text-white
+  }
+
+  .menu-rows-description {
+    @apply basis-full place-self-center
+  }
+
+  .menu-rows-arrow {
+    @apply place-self-center
+  }
+
+  .menu-rows-socialmedia {
+    @apply place-self-center text-slate-600
+  }
+
+  .night-mode-on {
+    @apply bg-slate-500 rounded-full h-6 w-6 mt-1 ml-[1.95rem] transition-all ease-in
+  }
+
+  .night-mode-off {
+    @apply bg-slate-500 rounded-full h-6 w-6 mt-1 ml-1 transition-all ease-in
+  }
 }
