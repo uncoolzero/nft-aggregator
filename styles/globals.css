@@ -63,11 +63,11 @@ a {
   }
 
   .menu-on {
-    @apply backdrop-blur-2xl w-[100%] h-[100%] absolute top-16 right-0 z-20 transition-all ease-in-out overflow-y-hidden
+    @apply bg-gradient-to-b from-[#0d1525] to-black backdrop-blur-xl w-[100%] h-screen absolute top-[3.75rem] right-0 z-20 transition-all ease-in-out overflow-y-hidden
   }
 
   .menu-off {
-    @apply backdrop-blur-2xl w-[100%] h-[100%] absolute top-16 right-full z-20 transition-all ease-in-out
+    @apply bg-gradient-to-b from-[#0d1525] to-black backdrop-blur-xl w-[100%] h-screen absolute top-[3.75rem] right-full z-20 transition-all ease-in-out
   }
 
   .menu-rows {
@@ -90,11 +90,8 @@ a {
     @apply place-self-center text-slate-600
   }
 
-  .night-mode-on {
-    @apply bg-slate-500 rounded-full h-6 w-6 mt-1 ml-[1.95rem] transition-all ease-in
+  .night-mode-selector {
+    @apply bg-slate-500 rounded-full h-6 w-6 mt-1 ml-1 dark:ml-[1.95rem] transition-all ease-in
   }
 
-  .night-mode-off {
-    @apply bg-slate-500 rounded-full h-6 w-6 mt-1 ml-1 transition-all ease-in
-  }
 }

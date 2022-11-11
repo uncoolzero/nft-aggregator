@@ -8,6 +8,7 @@ import TrendingTable from '../components/TrendingTable'
 import { FaRedditAlien, FaTwitter, FaDiscord } from "react-icons/fa"
 import Communities from '../components/Communities';
 import Header from '../components/Header';
+import { useTheme } from '../lib/ThemeContext'
 
 interface Propping {
   trends: Array<{
@@ -26,6 +27,36 @@ interface Propping {
 }
 
 export default function Home({trends}: Propping) {
+
+  const { darkMode, setDarkMode } = useTheme()
+  const { menuOpen, setMenuOpen} = useTheme()
+
+  useEffect(() => {
+
+    if (darkMode)
+    {
+      document.documentElement.classList.add("dark")
+    }
+    else
+    {
+      document.documentElement.classList.remove("dark")
+    }
+
+  }, [darkMode])
+
+  useEffect(() => {
+
+    if (menuOpen)
+    {
+      document.body.classList.add("overflow-hidden")
+    }
+    else
+    {
+      document.body.classList.remove("overflow-hidden")
+    }
+
+  }, [menuOpen])
+
   return (
     <div className="font-inter">
       <Head>

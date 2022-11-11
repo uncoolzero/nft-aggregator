@@ -51,4 +51,5 @@ module.exports = {
     require('tailwind-scrollbar-hide'),
     require('tailwindcss-font-inter'),
   ],
+  darkMode: 'class'
 }
