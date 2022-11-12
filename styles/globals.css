@@ -36,11 +36,11 @@
   }
 
   .menu-on {
-    @apply bg-gradient-to-b dark:from-[#0d1525] dark:to-black from-[#EFF0F3] to-slate-500 backdrop-blur-xl w-[100%] h-screen absolute top-[3.75rem] right-0 z-20 transition-all ease-in-out overflow-y-hidden
+    @apply bg-gradient-to-b dark:from-[#0d1525] dark:to-black from-[#EFF0F3] to-slate-500 backdrop-blur-xl w-[100%] h-screen absolute top-[3.75rem] md:top-[6rem] xl:hidden right-0 z-20 transition-all ease-in-out overflow-y-hidden
   }
 
   .menu-off {
-    @apply bg-gradient-to-b dark:from-[#0d1525] dark:to-black from-[#EFF0F3] to-slate-500 backdrop-blur-xl w-[100%] h-screen absolute top-[3.75rem] right-full z-20 transition-all ease-in-out
+    @apply bg-gradient-to-b dark:from-[#0d1525] dark:to-black from-[#EFF0F3] to-slate-500 backdrop-blur-xl w-[100%] h-screen absolute top-[3.75rem] md:top-[6rem] xl:hidden right-full z-20 transition-all ease-in-out
   }
 
   .menu-rows {
@@ -48,7 +48,7 @@
   }
 
   .menu-rows-icon {
-    @apply pr-2 place-self-center text-white
+    @apply pr-2 place-self-center dark:text-white
   }
 
   .menu-rows-description {

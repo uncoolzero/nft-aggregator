@@ -151,7 +151,7 @@ return (
             
           </div>
           <div className="menu-rows place-self-center hover:bg-transparent">
-            <button className="bg-blue-600 px-16 py-2 rounded-lg hover:bg-blue-500 transition-all ease-in-out text-xl">Connect Wallet</button> 
+            <button className="bg-blue-600 px-16 py-2 rounded-lg hover:bg-blue-500 text-white transition-all ease-in-out text-xl">Connect Wallet</button> 
           </div>
           <div className="menu-rows bg-black/10 flex justify-evenly">
             <div className="menu-rows-socialmedia"><FaRedditAlien /></div>
