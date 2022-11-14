@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
 
 interface Props {
@@ -17,13 +17,82 @@ interface Props {
     dailyTradedItemCount: number;}>
 }
 
+
+
 function Trending({trends}: Props) {
+
+  const scrollCarousel = useRef(null)
+
+  function scrollLeft() {
+
+    var carousel = document.getElementById("scrollCarousel")
+
+    carousel?.scrollBy({ left: -400, behavior: "smooth"})
+
+    console.log(carousel?.scrollLeft, carousel?.clientWidth, carousel?.scrollWidth)
+
+  }
+
+  function scrollRight() {
+
+    var carousel = document.getElementById("scrollCarousel")
+
+    carousel?.scrollBy({ left: 400, behavior: "smooth"})
+
+  }
+
+  function handleScroll() {
+
+    var carousel = document.getElementById("scrollCarousel")
+    var leftScroll = document.getElementById("leftScroll")
+    var rightScroll = document.getElementById("rightScroll")
+
+    if (carousel?.scrollLeft)
+    {
+
+        var maxScrollLeft = carousel.scrollWidth - carousel.clientWidth
+
+        if (carousel.scrollLeft < 10)
+        {
+          if (leftScroll)
+          {
+            leftScroll.className = "trending-scroll-button-invisible left-2"
+          }
+        }
+        else if (carousel.scrollLeft > maxScrollLeft - 10)
+        {
+          if (rightScroll)
+          {
+            rightScroll.className = "trending-scroll-button-invisible right-2"
+          }
+        }
+        else
+        {
+          if (leftScroll && rightScroll)
+          {
+            leftScroll.className = "trending-scroll-button left-2"
+            rightScroll.className = "trending-scroll-button right-2"
+          }
+        }
+
+    }
+
+  }
+
+  useEffect(() => {
+    const scroll = scrollCarousel.current
+
+    // @ts-ignore: Object is possibly 'null'.
+    scroll.addEventListener("scroll", handleScroll)
+
+  }, [handleScroll])
+
 
   return (
     //@ts-ignore
     <div className="flex flex-row relative">
-    <div className="trending-scroll-button left-2"><MdNavigateBefore /></div>
-    <div className="flex flex-row overflow-x-scroll snap-x snap-mandatory w-full text-white scrollbar-hide">
+    <div id="leftScroll" onClick={scrollLeft} className="trending-scroll-button-invisible left-2"><MdNavigateBefore /></div>
+    <div id="scrollCarousel" ref={scrollCarousel} className="flex flex-row overflow-x-scroll snap-x snap-mandatory w-full text-white scrollbar-hide">
       {trends.map((trends, index) =>
       index < 8 && (
       <div id={trends.name} key={trends.id} className="relative min-w-full lg:min-w-[46.5%] xl:min-w-[29.9%] 2xl:min-w-[22.9%] snap-center first:ml-0 first:mr-8 last:ml-8 2xl:first:mr-[1.3rem] 2xl:last:ml-[1.3rem] last:mr-0 mx-8 2xl:mx-[1.3rem] aspect-square rounded-[1.75rem] overflow-hidden border-black/20">
@@ -40,7 +109,7 @@ function Trending({trends}: Props) {
     </div>
     ))}
     </div>
-    <div className="trending-scroll-button right-2"><MdNavigateNext /></div>
+    <div id="rightScroll" onClick={scrollRight} className="trending-scroll-button right-2"><MdNavigateNext /></div>
     </div>
     )
 

@@ -68,7 +68,11 @@
   }
 
   .trending-scroll-button {
-    @apply absolute top-[45%] z-30 bg-black/20 rounded-full text-white/95 text-4xl hover:bg-white hover:text-black hover:cursor-pointer transition-all ease-in-out
+    @apply absolute top-[45%] z-30 bg-black/20 rounded-full text-white/95 text-4xl hover:bg-white hover:text-black hover:drop-shadow-lg hover:shadow-black hover:cursor-pointer transition-all ease-in-out
+  }
+
+  .trending-scroll-button-invisible {
+    @apply invisible absolute top-[45%] z-30 bg-black/20 rounded-full text-white/95 text-4xl hover:bg-white hover:text-black hover:cursor-pointer transition-all ease-in-out
   }
 
 }

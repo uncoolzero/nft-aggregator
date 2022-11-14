@@ -1,7 +1,72 @@
 import data from "../data/data"
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
+import { useEffect, useRef } from 'react'
 
 function Communities() {
+
+    const communityCarousel = useRef(null)
+  
+    function handleScroll() {
+  
+      var carousel = document.getElementById("communityCarousel")
+      var leftScroll = document.getElementById("leftScrollCommunity")
+      var rightScroll = document.getElementById("rightScrollCommunity")
+  
+      if (carousel?.scrollLeft)
+      {
+  
+          var maxScrollLeft = carousel.scrollWidth - carousel.clientWidth
+  
+          if (carousel.scrollLeft < 10)
+          {
+            if (leftScroll)
+            {
+              leftScroll.className = "trending-scroll-button-invisible left-2"
+            }
+          }
+          else if (carousel.scrollLeft > maxScrollLeft - 10)
+          {
+            if (rightScroll)
+            {
+              rightScroll.className = "trending-scroll-button-invisible right-2"
+            }
+          }
+          else
+          {
+            if (leftScroll && rightScroll)
+            {
+              leftScroll.className = "trending-scroll-button left-2"
+              rightScroll.className = "trending-scroll-button right-2"
+            }
+          }
+  
+      }
+  
+    }
+
+    function scrollLeft() {
+
+        var carousel = document.getElementById("communityCarousel")
+    
+        carousel?.scrollBy({ left: -300, behavior: "smooth"})
+    
+    }
+    
+    function scrollRight() {
+
+    var carousel = document.getElementById("communityCarousel")
+
+    carousel?.scrollBy({ left: 300, behavior: "smooth"})
+
+    }
+
+    useEffect(() => {
+        const scroll = communityCarousel.current
+    
+        // @ts-ignore: Object is possibly 'null'.
+        scroll.addEventListener("scroll", handleScroll)
+    
+      }, [handleScroll])
 
 return(
     <div className="dark:bg-slate-800 bg-slate-300 w-full text-3xl flex flex-col rounded-lg md:flex-row md:content-center">
@@ -13,8 +78,8 @@ return(
         </div>
         <div className="hidden md:flex w-24 -mr-8 rounded-l-lg bg-gradient-to-r z-10 dark:from-slate-800 from-slate-300" />
         <div className="flex flex-row relative w-full md:w-[70%]">
-            <div className="trending-scroll-button left-2"><MdNavigateBefore /></div>    
-            <div className="flex flex-row overflow-x-scroll scrollbar-hide mx-2 mb-6 pl-4 pr-4 snap-x snap-mandatory gap-x-8 md:gap-x-4 md:pt-6 md:w-[170%] lg:w-[250%]">
+            <div id="leftScrollCommunity" onClick={scrollLeft} className="trending-scroll-button-invisible left-2"><MdNavigateBefore /></div>    
+            <div id="communityCarousel" ref={communityCarousel} className="flex flex-row overflow-x-scroll scrollbar-hide mx-2 mb-6 pl-4 pr-4 snap-x snap-mandatory gap-x-8 md:gap-x-4 md:pt-6 md:w-[170%] lg:w-[250%]">
             {data.map((data) =>
                 <div key={data.name} className={`min-w-full md:min-w-[47%] lg:min-w-[32%] bg-cover bg-center rounded-lg overflow-clip`} style={{backgroundColor: `rgb(${data.color})`}}>
                         <div className={`px-4 py-4 snap-center rounded-lg`}>
@@ -35,7 +100,7 @@ return(
                 </div>
             )}
             </div>
-            <div className="trending-scroll-button right-2"><MdNavigateNext /></div>
+            <div id="rightScrollCommunity" onClick={scrollRight} className="trending-scroll-button right-2"><MdNavigateNext /></div>
         </div>
     </div>
 )
