@@ -14,7 +14,7 @@ import { ImCheckmark } from 'react-icons/im'
 import { BsStars, BsBook, BsFillPaletteFill, BsTools, BsFillEyeFill } from 'react-icons/bs'
 import { FaRedditAlien, FaTwitter, FaDiscord, FaBookReader } from "react-icons/fa"
 import { useTheme } from '../lib/ThemeContext'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { translations } from '../data/lang'
 
 
@@ -25,6 +25,7 @@ function Header() {
   const { darkMode, setDarkMode } = useTheme()
   const { menuOpen, setMenuOpen} = useTheme()
   const { language, setLanguage } = useTheme()
+  const [ languageID, setLanguageID ] = useState<number>()
 
   function getTranslation(lang:string, text:string) {
 
@@ -90,10 +91,49 @@ function Header() {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
-    console.log("changing dark mode -", darkMode)
   }
 
-  useEffect(() => { setDarkMode(!darkMode) }, [])
+  useEffect(() => {
+
+    if (language === "en")
+    {
+      setLanguageID(0)
+    }
+    else if (language === "es")
+    {
+      setLanguageID(1)
+    }
+    else if (language === "it")
+    {
+      setLanguageID(2)
+    }
+
+  }, [language])
+
+  useEffect(() => {
+
+    if (languageID === 0)
+    {
+      setLanguage("en")
+    }
+    else if (languageID === 1)
+    {
+      setLanguage("es")
+    }
+    else if (languageID === 2)
+    {
+      setLanguage("it")
+    }
+    else if (languageID! > 2)
+    {
+      setLanguageID(0)
+    }
+
+  }, [languageID])
+
+  useEffect(() => { 
+    setDarkMode(!darkMode) 
+  }, [])
 
 return (
 
@@ -215,7 +255,7 @@ return (
         <div id="hamburgermenu" onClick={toggleMenu} className="menu-search-closed"><HiMenu /></div>
       </div>
       <div id="menu"className="menu-off">
-        <div className="text-3xl h-[90%] grid grid-rows-[repeat(8,_minmax(0,_1fr))]">
+        <div className="text-3xl h-[90%] grid grid-rows-[repeat(8,_minmax(0,_1fr))] select-none">
           <div className="menu-rows">
             <div className="menu-rows-icon">
               <MdOutlineExplore />
@@ -256,7 +296,18 @@ return (
               <MdNavigateNext />
             </div>
           </div>
-          <div className=""></div>
+          <div onClick={() => setLanguageID(languageID! + 1)} className="menu-rows">
+            <div className="menu-rows-icon">
+              <IoLanguage />
+            </div>
+            <div className="menu-rows-description">{getTranslation(language!, "language")}
+            </div>
+            <div className="menu-rows-arrow">
+              {language === "en" && <div>English</div>}
+              {language === "it" && <div>Italiano</div>}
+              {language === "es" && <div>Español</div>}
+            </div>
+          </div>
           <div className="menu-rows hover:bg-transparent">
             <div className="menu-rows-description">{getTranslation(language!, "darkmode")}</div>
             <div onClick={toggleDarkMode} className="bg-white rounded-full h-8 w-[72px] place-self-center relative">

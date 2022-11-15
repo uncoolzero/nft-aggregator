@@ -69,13 +69,6 @@ export default function Home({trends}: Propping) {
     
   }
 
-  useEffect(() => {
-    if (language)
-    {
-      console.log(getTranslation(language, "main"))
-    }
-  }, [language])
-
   return (
     <div className="font-inter dark:text-white text-neutral-900">
       <Head>
@@ -173,6 +166,6 @@ export const getStaticProps = async() => {
     props: {
       trends
     },
-    revalidate: 60
+    revalidate: 300
   }
 }

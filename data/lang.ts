@@ -127,7 +127,7 @@ const translations = {
     },
     "es": {
         "main": "Explorar y descubrir las NFT",
-        "nowtrending": "Ahora es tendencia",
+        "nowtrending": "Ahora es Tendencia",
         "exploreall": "Explorar todas las colecciones",
         "earn1": "Gana hasta ",
         "earn2": " APY con COIN",
