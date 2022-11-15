@@ -91,13 +91,57 @@ return (
           <input id="searchbox" type="text" placeholder='Search items and collections' className="input-search-closed"></input>
         </div>
         <div className="hidden place-items-center lg:flex gap-x-6">
-            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Explore</button>
-            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Stats</button>
-            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Resources</button>
-            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 px-2 py-1 rounded-md transition-all ease-in-out">Create</button>
-            <button className="text-4xl xl:text-3xl hover:bg-slate-700/50 dark:hover:text-slate-300 rounded-md transition-all ease-in-out"><CgProfile /></button>
-            <button className="text-4xl xl:text-3xl hover:bg-slate-700/50 dark:hover:text-slate-300 rounded-md transition-all ease-in-out"><IoWalletOutline /></button>
-          </div>
+            <div className="group relative">
+              <button className="hidden xl:inline-block group-hover:bg-slate-700/50 dark:group-hover:bg-slate-600 group-hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">Explore</button>
+              <div className="dropdown-group">
+                <button className="dropdown-button dropdown-borders-topbottom rounded-t-md border-b">All NFTs</button>
+                <button className="dropdown-button dropdown-borders">Art</button>
+                <button className="dropdown-button dropdown-borders">Collectibles</button>
+                <button className="dropdown-button dropdown-borders">Domain Names</button>
+                <button className="dropdown-button dropdown-borders">Music</button>
+                <button className="dropdown-button dropdown-borders">Photography</button>
+                <button className="dropdown-button dropdown-borders">Sports</button>
+                <button className="dropdown-button dropdown-borders">Trading Cards</button>
+                <button className="dropdown-button dropdown-borders">Utility</button>
+                <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">Virtual Worlds</button>
+              </div>
+            </div>
+            <div className="group relative">
+              <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">Stats</button>
+              <div className="dropdown-group">
+                <button className="dropdown-button dropdown-borders-topbottom rounded-t-md border-b">Rankings</button>
+                <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">Activity</button>
+              </div>
+            </div>
+            <div className="group relative">
+              <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">Resources</button>
+              <div className="dropdown-group">
+                <button className="dropdown-button dropdown-borders-topbottom rounded-t-md border-b">Learn</button>
+                <button className="dropdown-button dropdown-borders">Help Center</button>
+                <button className="dropdown-button dropdown-borders">Platform Status</button>
+                <button className="dropdown-button dropdown-borders">Partners</button>
+                <button className="dropdown-button dropdown-borders">Taxes</button>
+                <button className="dropdown-button dropdown-borders">Blog</button>
+                <button className="dropdown-button dropdown-borders">Docs</button>
+                <button className="dropdown-button dropdown-borders">Newsletter</button>
+                <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">Social Media</button>
+              </div>
+            </div>
+            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">Create</button>
+            <div className="group relative">
+              <button className="text-4xl xl:text-3xl hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white rounded-md align-middle px-2 py-1 -mx-2 -my-1 transition-all ease-in-out"><CgProfile /></button>
+              <div className="dropdown-group-profile">
+                <button className="dropdown-button dropdown-borders-topbottom rounded-t-md border-b">Profile</button>
+                <button className="dropdown-button dropdown-borders">Favourites</button>
+                <button className="dropdown-button dropdown-borders">Watchlist</button>
+                <button className="dropdown-button dropdown-borders">My Collections</button>
+                <button className="dropdown-button dropdown-borders">Settings</button>
+                <button className="dropdown-button dropdown-borders">Language</button>
+                <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">Night Mode</button>
+              </div>
+            </div>
+            <button className="text-4xl xl:text-3xl hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white rounded-md align-middle px-2 py-1 -mx-2 -my-1 transition-all ease-in-out"><IoWalletOutline /></button>
+        </div>
         <div id="hamburgermenu" onClick={toggleMenu} className="menu-search-closed"><HiMenu /></div>
       </div>
       <div id="menu"className="menu-off">

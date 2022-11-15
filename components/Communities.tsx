@@ -81,21 +81,23 @@ return(
             <div id="leftScrollCommunity" onClick={scrollLeft} className="trending-scroll-button-invisible left-2"><MdNavigateBefore /></div>    
             <div id="communityCarousel" ref={communityCarousel} className="flex flex-row overflow-x-scroll scrollbar-hide mx-2 mb-6 pl-4 pr-4 snap-x snap-mandatory gap-x-8 md:gap-x-4 md:pt-6 md:w-[170%] lg:w-[250%]">
             {data.map((data) =>
-                <div key={data.name} className={`min-w-full md:min-w-[47%] lg:min-w-[32%] bg-cover bg-center rounded-lg overflow-clip`} style={{backgroundColor: `rgb(${data.color})`}}>
-                        <div className={`px-4 py-4 snap-center rounded-lg`}>
-                            <img className="rounded-lg w-full object-cover" src={data.image} />
-                            <div className="text-lg text-white font-bold py-2">{data.name}</div>
-                            <div className="text-sm h-36 md:h-44 text-white/80">{data.description}</div>
-                            <div className="flex flex-row text-base gap-x-4">
-                                <div className="border-r border-white/20 pr-4">
-                                    <div className="text-white/80">Volume</div>
-                                    <div className="text-white font-bold">{data.volume} ETH</div>
-                                </div>
-                                <div>
-                                    <div className="text-white/80">Floor</div>
-                                    <div className="text-white font-bold">{data.floorPrice} ETH</div>
-                                </div>
-                            </div>
+                <div key={data.name} className={`min-w-full md:min-w-[47%] lg:min-w-[32%] bg-cover bg-center rounded-lg overflow-clip hover:cursor-pointer`} style={{backgroundColor: `rgb(${data.color})`}}>
+                        <div className="bg-transparent hover:bg-white/10 transition-colors ease-in-out">
+                          <div className={`px-4 py-4 snap-center rounded-lg`}>
+                              <img className="rounded-lg w-full object-cover" src={data.image} />
+                              <div className="text-lg text-white font-bold py-2">{data.name}</div>
+                              <div className="text-sm h-36 md:h-44 text-white/80">{data.description}</div>
+                              <div className="flex flex-row text-base gap-x-4">
+                                  <div className="border-r border-white/20 pr-4">
+                                      <div className="text-white/80">Volume</div>
+                                      <div className="text-white font-bold">{data.volume} ETH</div>
+                                  </div>
+                                  <div>
+                                      <div className="text-white/80">Floor</div>
+                                      <div className="text-white font-bold">{data.floorPrice} ETH</div>
+                                  </div>
+                              </div>
+                          </div>
                         </div>
                 </div>
             )}

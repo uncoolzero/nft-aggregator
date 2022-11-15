@@ -125,14 +125,14 @@ export default function Home({trends}: Propping) {
         </div>
 
         <div className="grid grid-cols-4 justify-items-center gap-y-4 z-10 lg:w-[50%] lg:self-center">
-          <button className="hover:bg-slate-700/50 px-2 py-1 rounded-md transition-all ease-in-out">About</button>
-          <button className="hover:bg-slate-700/50 px-2 py-1 rounded-md transition-all ease-in-out">API</button>
-          <button className="hover:bg-slate-700/50 px-2 py-1 rounded-md transition-all ease-in-out">Contact</button>
-          <button className="hover:bg-slate-700/50 px-2 py-1 rounded-md transition-all ease-in-out">Careers</button>
-          <button className="hover:bg-slate-700/50 px-2 py-1 rounded-md transition-all ease-in-out">Docs</button>
-          <button className="hover:bg-slate-700/50 px-2 py-1 rounded-md transition-all ease-in-out">Help</button>
-          <button className="hover:bg-slate-700/50 px-2 py-1 rounded-md transition-all ease-in-out">Newsletter</button>
-          <button className="hover:bg-slate-700/50 px-2 py-1 rounded-md transition-all ease-in-out">Terms</button>
+          <button className="footer-button">About</button>
+          <button className="footer-button">API</button>
+          <button className="footer-button">Contact</button>
+          <button className="footer-button">Careers</button>
+          <button className="footer-button">Docs</button>
+          <button className="footer-button">Help</button>
+          <button className="footer-button">Newsletter</button>
+          <button className="footer-button">Terms</button>
         </div>
 
         <div className="border-t-[1px] flex flex-col py-4 justify-center items-center z-10 lg:w-[75%] lg:self-center">
