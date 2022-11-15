@@ -10,6 +10,7 @@ import { IoWalletOutline, IoLibrarySharp, IoShareSocialSharp, IoSettingsSharp, I
 import { MdOutlineExplore, MdNavigateNext, MdToys, MdSportsSoccer, MdMonetizationOn, MdPerson } from 'react-icons/md'
 import { TbActivity } from 'react-icons/tb'
 import { TfiStatsUp } from 'react-icons/tfi'
+import { ImCheckmark } from 'react-icons/im'
 import { BsStars, BsBook, BsFillPaletteFill, BsTools, BsFillEyeFill } from 'react-icons/bs'
 import { FaRedditAlien, FaTwitter, FaDiscord, FaBookReader } from "react-icons/fa"
 import { useTheme } from '../lib/ThemeContext'
@@ -187,9 +188,18 @@ return (
                 <button className="dropdown-button dropdown-borders relative group/lang">
                   <div className="dropdown-button-icon"><IoLanguage /></div>{getTranslation(language!, "language")}
                     <div className="absolute top-0 -left-48 invisible opacity-0 group-hover/lang:visible group-hover/lang:opacity-100">
-                      <div onClick={() => setLanguage("en")} className="px-4 py-4 w-48 mt-[1px] text-white hover:text-black dark:hover:text-white dark:bg-slate-600 bg-[#9299a4] dark:hover:bg-slate-400 hover:bg-[#b4bdca] hover:drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] transition-all ease-in-out rounded-tl-md">English</div>
-                      <div onClick={() => setLanguage("it")} className="px-4 py-4 w-48 text-white hover:text-black dark:hover:text-white dark:bg-slate-600 bg-[#9299a4] dark:hover:bg-slate-400 hover:bg-[#b4bdca] hover:drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] transition-all ease-in-out dropdown-borders">Italiano</div>
-                      <div onClick={() => setLanguage("es")} className="px-4 py-4 w-48 text-white hover:text-black dark:hover:text-white dark:bg-slate-600 bg-[#9299a4] dark:hover:bg-slate-400 hover:bg-[#b4bdca] hover:drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] transition-all ease-in-out rounded-b-md">Español</div>
+                      <div onClick={() => setLanguage("en")} className="mt-[1px] dropdown-language-button rounded-tl-md flex flex-row">
+                        <div className="basis-full place-self-center">English</div>
+                        {language === "en" && <div className="place-self-center"><ImCheckmark/></div>}
+                      </div>
+                      <div onClick={() => setLanguage("it")} className="dropdown-language-button dropdown-borders flex flex-row">
+                        <div className="basis-full place-self-center">Italiano</div>
+                        {language === "it" && <div className="place-self-center"><ImCheckmark/></div>}
+                      </div>
+                      <div onClick={() => setLanguage("es")} className="dropdown-language-button rounded-b-md flex flex-row">
+                        <div className="basis-full place-self-center">Español</div>
+                        {language === "es" && <div className="place-self-center"><ImCheckmark/></div>}
+                      </div>
                     </div>
                   </button>
                 <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">
