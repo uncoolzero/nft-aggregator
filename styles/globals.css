@@ -88,7 +88,11 @@
   }
 
   .dropdown-button {
-    @apply px-4 py-4 w-48 text-left text-sm font-semibold text-white hover:text-black dark:hover:text-white dark:bg-slate-600 bg-[#9299a4] dark:hover:bg-slate-400 hover:bg-[#b4bdca] hover:drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] transition-all ease-in-out
+    @apply flex flex-row px-4 py-4 w-48 text-left text-sm font-semibold text-white hover:text-black dark:hover:text-white dark:bg-slate-600 bg-[#9299a4] dark:hover:bg-slate-400 hover:bg-[#b4bdca] hover:drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] transition-all ease-in-out
+  }
+
+  .dropdown-button-icon {
+    @apply place-self-center text-lg rounded-full border-white pr-2
   }
 
   .dropdown-borders {
