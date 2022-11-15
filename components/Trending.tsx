@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
+import { useTheme } from '../lib/ThemeContext'
+import { translations } from '../data/lang'
 
 interface Props {
   trends: Array<{
@@ -17,11 +19,20 @@ interface Props {
     dailyTradedItemCount: number;}>
 }
 
-
-
 function Trending({trends}: Props) {
 
+  const { language, setLanguage } = useTheme()
   const scrollCarousel = useRef(null)
+
+  function getTranslation(lang:string, text:string) {
+
+    if (language)
+    {
+    //@ts-ignore
+    return translations![lang][text]
+    }
+    
+  }
 
   function scrollLeft() {
 
@@ -101,7 +112,7 @@ function Trending({trends}: Props) {
             {trends.name}
           </div>
           <div className="absolute bottom-0 text-sm md:text-3xl lg:text-lg left-0 pl-4 pb-2 drop-shadow-[0_1px_1px_rgba(0,0,0,1)] z-[2]">
-            Floor: {trends.floorPrice} ETH
+            <div className="inline">{getTranslation(language!, "floor")}</div>: {trends.floorPrice} ETH
           </div>
         </div>
         <div className="relative max-w-full aspect-square border rounded-[1.75rem] bg-origin-border bg-no-repeat transition-all bg-center hover:scale-110 duration-500 ease-in-out border-black/20 bg-cover" style={{backgroundImage: `url(${trends.image})`}}>

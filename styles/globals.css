@@ -64,7 +64,11 @@
   }
 
   .night-mode-selector {
-    @apply bg-slate-500 rounded-full h-6 w-6 mt-1 ml-1 dark:ml-[1.95rem] transition-all ease-in
+    @apply bg-slate-500 rounded-full h-6 w-6 mt-1 ml-1 absolute left-0 dark:left-7 dark:sm:left-8 dark:lg:left-9 transition-all ease-in
+  }
+
+  .night-mode-selector-desktop {
+    @apply bg-slate-500 rounded-full h-5 w-5 mt-0.5 ml-[0.15rem] dark:ml-[1.35rem] transition-all ease-in
   }
 
   .trending-scroll-button {
@@ -80,11 +84,11 @@
   }
 
   .dropdown-group {
-    @apply absolute top-10 invisible rounded-md border-collapse group-hover:visible group-hover:opacity-100 opacity-0 drop-shadow transition-opacity ease-in-out
+    @apply absolute top-6 invisible rounded-md border-collapse group-hover:visible group-hover:top-10 group-hover:opacity-100 opacity-0 drop-shadow transition-all ease-in-out
   }
 
   .dropdown-group-profile {
-    @apply absolute top-10 -right-2 invisible rounded-md border-collapse group-hover:visible group-hover:opacity-100 opacity-0 drop-shadow transition-opacity ease-in-out
+    @apply absolute top-6 -right-2 invisible rounded-md border-collapse group-hover:visible group-hover:top-10 group-hover:opacity-100 opacity-0 drop-shadow transition-all ease-in-out z-[90]
   }
 
   .dropdown-button {

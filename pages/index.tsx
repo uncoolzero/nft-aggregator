@@ -9,6 +9,7 @@ import { FaRedditAlien, FaTwitter, FaDiscord } from "react-icons/fa"
 import Communities from '../components/Communities';
 import Header from '../components/Header';
 import { useTheme } from '../lib/ThemeContext'
+import { translations } from '../data/lang'
 
 interface Propping {
   trends: Array<{
@@ -29,7 +30,8 @@ interface Propping {
 export default function Home({trends}: Propping) {
 
   const { darkMode, setDarkMode } = useTheme()
-  const { menuOpen, setMenuOpen} = useTheme()
+  const { menuOpen, setMenuOpen } = useTheme()
+  const { language, setLanguage } = useTheme()
 
   useEffect(() => {
 
@@ -57,6 +59,23 @@ export default function Home({trends}: Propping) {
 
   }, [menuOpen])
 
+  function getTranslation(lang:string, text:string) {
+
+    if (language)
+    {
+    //@ts-ignore
+    return translations[lang][text]
+    }
+    
+  }
+
+  useEffect(() => {
+    if (language)
+    {
+      console.log(getTranslation(language, "main"))
+    }
+  }, [language])
+
   return (
     <div className="font-inter dark:text-white text-neutral-900">
       <Head>
@@ -73,21 +92,21 @@ export default function Home({trends}: Propping) {
       <main className="px-6 flex flex-col gap-y-12 md:text-xl z-10">
 
         <h1 className="font-bold text-5xl pt-6 z-10">
-          <div className="text-center drop-shadow-[0_1px_1px_rgba(0,0,0,1)]">Explore and discover NFTs</div>
+          <div className="text-center drop-shadow-[0_1px_1px_rgba(0,0,0,1)]">{getTranslation(language!, "main")}</div>
         </h1>
 
         <h2 className="font-semibold text-lg z-10">
           <Trending trends={trends} />
         </h2>
 
-        <div className="z-10 flex font-bold text-xl md:text-2xl lg:text-3xl justify-center">Now Trending</div>
+        <div className="z-10 flex font-bold text-xl md:text-2xl lg:text-3xl justify-center">{getTranslation(language!, "nowtrending")}</div>
 
         <h3 className="z-10">
           <TrendingTable trends={trends} />
         </h3>
         
         <div className="rounded-md bg-slate-600/20 hover:bg-slate-600/40 hover:cursor-pointer p-2 text-white lg:max-w-[50%] shadow-md w-10/12 self-center z-10 transition-all ease-in-out">
-          <div className="flex items-center justify-center">Explore all collections</div>
+          <div className="flex items-center justify-center">{getTranslation(language!, "exploreall")}</div>
         </div>
 
         <div className="z-10 shadow-md">
@@ -98,15 +117,15 @@ export default function Home({trends}: Propping) {
           <div className="md:grid md:grid-cols-2">
             <div className="place-self-center md:pl-16 lg:pl-24 xl:pl-36 relative z-20">
               <div className="text-4xl xl:text-5xl font-bold">
-              Earn up to <span className="bg-gradient-to-r from-red-500 via-green-500 to-blue-500 animate-text bg-clip-text text-transparent">9000.12%</span> APY with COIN
+              {getTranslation(language!, "earn1")}<span className="bg-gradient-to-r from-red-500 via-green-500 to-blue-500 animate-text bg-clip-text text-transparent">9000.12%</span>{getTranslation(language!, "earn2")}
               </div>
               <br />
               <div className="">
-              Stake COIN to <span className="font-bold">earn a share of daily trading fees</span> in WETH, and even more COIN.
+              {getTranslation(language!, "stake1")}<span className="font-bold">{getTranslation(language!, "stake2")}</span>{getTranslation(language!, "stake3")}
               </div>
               <br />
               <button className="px-6 py-4 text-white bg-slate-800/20 hover:bg-slate-900/30 dark:bg-slate-700 rounded-lg dark:hover:bg-slate-500 transition-all ease-in-out shadow-md">
-              Learn More
+              {getTranslation(language!, "learnmore")}
               </button>
             </div>
             <div className="place-self-center absolute top-0 -right-5 xl:-right-10 overflow-clip lg:overflow-visible md:relative">
@@ -116,7 +135,7 @@ export default function Home({trends}: Propping) {
         </div>
 
         <div className="bg-slate-600/20 pb-4 rounded-md shadow-md z-10 lg:min-w-[50%] lg:self-center">
-          <div className="font-semibold flex justify-center items-center pt-2 pb-4">Join the community</div>
+          <div className="font-semibold flex justify-center items-center pt-2 pb-4">{getTranslation(language!, "joincommunity")}</div>
           <div className="flex flex-row justify-evenly">
             <button className="p-2 text-4xl md:text-5xl rounded-md bg-slate-200/20 hover:bg-[#5865F2] transition-all ease-in-out shadow-md hover:text-white"><FaDiscord /></button>
             <button className="p-2 text-4xl md:text-5xl rounded-md bg-slate-200/20 hover:bg-blue-500 transition-all ease-in-out shadow-md hover:text-white"><FaTwitter /></button>
@@ -125,14 +144,14 @@ export default function Home({trends}: Propping) {
         </div>
 
         <div className="grid grid-cols-4 justify-items-center gap-y-4 z-10 lg:w-[50%] lg:self-center">
-          <button className="footer-button">About</button>
-          <button className="footer-button">API</button>
-          <button className="footer-button">Contact</button>
-          <button className="footer-button">Careers</button>
-          <button className="footer-button">Docs</button>
-          <button className="footer-button">Help</button>
-          <button className="footer-button">Newsletter</button>
-          <button className="footer-button">Terms</button>
+          <button className="footer-button">{getTranslation(language!, "about")}</button>
+          <button className="footer-button">{getTranslation(language!, "api")}</button>
+          <button className="footer-button">{getTranslation(language!, "contact")}</button>
+          <button className="footer-button">{getTranslation(language!, "careers")}</button>
+          <button className="footer-button">{getTranslation(language!, "docs")}</button>
+          <button className="footer-button">{getTranslation(language!, "help")}</button>
+          <button className="footer-button">{getTranslation(language!, "newsletter")}</button>
+          <button className="footer-button">{getTranslation(language!, "terms")}</button>
         </div>
 
         <div className="border-t-[1px] flex flex-col py-4 justify-center items-center z-10 lg:w-[75%] lg:self-center">

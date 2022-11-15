@@ -1,10 +1,23 @@
 import data from "../data/data"
+import { useTheme } from '../lib/ThemeContext'
+import { translations } from '../data/lang'
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md'
 import { useEffect, useRef } from 'react'
 
 function Communities() {
 
     const communityCarousel = useRef(null)
+    const { language, setLanguage } = useTheme()
+
+    function getTranslation(lang:string, text:string) {
+
+      if (language)
+      {
+      //@ts-ignore
+      return translations[lang][text]
+      }
+      
+    }
   
     function handleScroll() {
   
@@ -71,10 +84,10 @@ function Communities() {
 return(
     <div className="dark:bg-slate-800 bg-slate-300 w-full text-3xl flex flex-col rounded-lg md:flex-row md:content-center">
         <div className="w-full px-8 md:mx-2 place-content-center rounded-lg md:flex md:flex-col md:px-0">
-            <div className="place-self-center text-3xl  text-center mt-4">Create your own Community</div>
+            <div className="place-self-center text-3xl  text-center mt-4">{getTranslation(language!, "createcommunitytext")}</div>
             <div className="place-self-center text-base text-center mt-4">
-                <a className="underline decoration-dotted underline-offset-4 cursor-pointer hover:text-blue-400 transition-all ease-in-out">Terms and Conditions</a> apply</div>
-            <button className="bg-blue-500 hover:bg-blue-400 transition-all ease-in-out rounded-lg w-full md:w-[90%] place-self-center my-4 text-lg px-8 py-2 text-center text-white shadow-md">Create Community</button>
+                <a className="underline decoration-dotted underline-offset-4 cursor-pointer hover:text-blue-400 transition-all ease-in-out">{getTranslation(language!, "tnc1")}</a>{getTranslation(language!, "tnc2")}</div>
+            <button className="bg-blue-500 hover:bg-blue-400 transition-all ease-in-out rounded-lg w-full md:w-[90%] place-self-center my-4 text-lg px-8 py-2 text-center text-white shadow-md">{getTranslation(language!, "createcommunitybutton")}</button>
         </div>
         <div className="hidden md:flex w-24 -mr-8 rounded-l-lg bg-gradient-to-r z-10 dark:from-slate-800 from-slate-300" />
         <div className="flex flex-row relative w-full md:w-[70%]">
@@ -89,11 +102,11 @@ return(
                               <div className="text-sm h-36 md:h-44 text-white/80">{data.description}</div>
                               <div className="flex flex-row text-base gap-x-4">
                                   <div className="border-r border-white/20 pr-4">
-                                      <div className="text-white/80">Volume</div>
+                                      <div className="text-white/80">{getTranslation(language!, "volume")}</div>
                                       <div className="text-white font-bold">{data.volume} ETH</div>
                                   </div>
                                   <div>
-                                      <div className="text-white/80">Floor</div>
+                                      <div className="text-white/80">{getTranslation(language!, "floor")}</div>
                                       <div className="text-white font-bold">{data.floorPrice} ETH</div>
                                   </div>
                               </div>

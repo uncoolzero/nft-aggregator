@@ -14,6 +14,7 @@ import { BsStars, BsBook, BsFillPaletteFill, BsTools, BsFillEyeFill } from 'reac
 import { FaRedditAlien, FaTwitter, FaDiscord, FaBookReader } from "react-icons/fa"
 import { useTheme } from '../lib/ThemeContext'
 import { useEffect } from 'react'
+import { translations } from '../data/lang'
 
 
 
@@ -22,6 +23,17 @@ function Header() {
 
   const { darkMode, setDarkMode } = useTheme()
   const { menuOpen, setMenuOpen} = useTheme()
+  const { language, setLanguage } = useTheme()
+
+  function getTranslation(lang:string, text:string) {
+
+    if (language)
+    {
+    //@ts-ignore
+    return translations[lang][text]
+    }
+    
+  }
 
   function toggleMenu() {
 
@@ -94,62 +106,62 @@ return (
           <div className="hidden md:flex">
           <FaSearch />
           </div>
-          <input id="searchbox" type="text" placeholder='Search items and collections' className="input-search-closed"></input>
+          <input id="searchbox" type="text" placeholder={getTranslation(language!, "searchitemsandcollections")} className="input-search-closed"></input>
         </div>
         <div className="hidden place-items-center lg:flex gap-x-6">
             <div className="group relative">
-              <button className="hidden xl:inline-block group-hover:bg-slate-700/50 dark:group-hover:bg-slate-600 group-hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">Explore</button>
+              <button className="hidden xl:inline-block group-hover:bg-slate-700/50 dark:group-hover:bg-slate-600 group-hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">{getTranslation(language!, "explore")}</button>
               <div className="dropdown-group">
                 <button className="dropdown-button dropdown-borders-topbottom rounded-t-md border-b">
-                  <div className="dropdown-button-icon"><HiOutlineSquares2X2 /></div>All NFTs</button>
+                  <div className="dropdown-button-icon"><HiOutlineSquares2X2 /></div>{getTranslation(language!, "allnfts")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><BsFillPaletteFill /></div>Art</button>
+                  <div className="dropdown-button-icon"><BsFillPaletteFill /></div>{getTranslation(language!, "art")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><MdToys/></div>Collectibles</button>
+                  <div className="dropdown-button-icon"><MdToys/></div>{getTranslation(language!, "collectibles")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><GoBrowser /></div>Domain Names</button>
+                  <div className="dropdown-button-icon"><GoBrowser /></div>{getTranslation(language!, "domainnames")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><FaMusic /></div>Music</button>
+                  <div className="dropdown-button-icon"><FaMusic /></div>{getTranslation(language!, "music")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><FaCamera /></div>Photography</button>
+                  <div className="dropdown-button-icon"><FaCamera /></div>{getTranslation(language!, "photography")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><MdSportsSoccer /></div>Sports</button>
+                  <div className="dropdown-button-icon"><MdSportsSoccer /></div>{getTranslation(language!, "sports")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><GiCardExchange /></div>Trading Cards</button>
+                  <div className="dropdown-button-icon"><GiCardExchange /></div>{getTranslation(language!, "tradingcards")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><BsTools /></div>Utility</button>
+                  <div className="dropdown-button-icon"><BsTools /></div>{getTranslation(language!, "utility")}</button>
                 <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">
-                  <div className="dropdown-button-icon"><GiWorld /></div>Virtual Worlds</button>
+                  <div className="dropdown-button-icon"><GiWorld /></div>{getTranslation(language!, "virtualworlds")}</button>
               </div>
             </div>
             <div className="group relative">
-              <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">Stats</button>
+              <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">{getTranslation(language!, "stats")}</button>
               <div className="dropdown-group">
                 <button className="dropdown-button dropdown-borders-topbottom rounded-t-md border-b">
-                  <div className="dropdown-button-icon"><GiPodium /></div>Rankings</button>
+                  <div className="dropdown-button-icon"><GiPodium /></div>{getTranslation(language!, "rankings")}</button>
                 <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">
-                  <div className="dropdown-button-icon"><TbActivity /></div>Activity</button>
+                  <div className="dropdown-button-icon"><TbActivity /></div>{getTranslation(language!, "activity")}</button>
               </div>
             </div>
             <div className="group relative">
-              <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">Resources</button>
+              <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">{getTranslation(language!, "resources")}</button>
               <div className="dropdown-group">
                 <button className="dropdown-button dropdown-borders-topbottom rounded-t-md border-b">
-                  <div className="dropdown-button-icon"><FaBookReader /></div>Learn</button>
+                  <div className="dropdown-button-icon"><FaBookReader /></div>{getTranslation(language!, "learn")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><BiHelpCircle /></div>Help Center</button>
+                  <div className="dropdown-button-icon"><BiHelpCircle /></div>{getTranslation(language!, "helpcenter")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><HiStatusOnline /></div>Platform Status</button>
+                  <div className="dropdown-button-icon"><HiStatusOnline /></div>{getTranslation(language!, "platformstatus")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><FaPeopleCarry /></div>Partners</button>
+                  <div className="dropdown-button-icon"><FaPeopleCarry /></div>{getTranslation(language!, "partners")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><MdMonetizationOn /></div>Taxes</button>
+                  <div className="dropdown-button-icon"><MdMonetizationOn /></div>{getTranslation(language!, "taxes")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><FaBlog /></div>Blog</button>
+                  <div className="dropdown-button-icon"><FaBlog /></div>{getTranslation(language!, "blog")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><IoLibrarySharp /></div>Docs</button>
+                  <div className="dropdown-button-icon"><IoLibrarySharp /></div>{getTranslation(language!, "docs2")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><FaRegNewspaper /></div>Newsletter</button>
+                  <div className="dropdown-button-icon"><FaRegNewspaper /></div>{getTranslation(language!, "newsletter2")}</button>
                 <div className="flex flex-row px-4 py-4 text-white dark:bg-slate-600 bg-[#9299a4] dropdown-borders-topbottom rounded-b-md border-t transition-all ease-in-out">
                   <div className="w-full flex justify-evenly">
                     <button className="p-2 -m-2 hover:bg-orange-500 hover:text-white transition-colors ease-in-out rounded-md"><FaRedditAlien /></button>
@@ -158,24 +170,34 @@ return (
                   </div></div>
               </div>
             </div>
-            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">Create</button>
+            <button className="hidden xl:inline-block hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white px-2 py-1 rounded-md transition-all ease-in-out">{getTranslation(language!, "create")}</button>
             <div className="group relative">
               <button className="text-4xl xl:text-3xl hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white rounded-md align-middle px-2 py-1 -mx-2 -my-1 transition-all ease-in-out"><CgProfile /></button>
               <div className="dropdown-group-profile">
                 <button className="dropdown-button dropdown-borders-topbottom rounded-t-md border-b">
-                  <div className="dropdown-button-icon"><MdPerson /></div>Profile</button>
+                  <div className="dropdown-button-icon"><MdPerson /></div>{getTranslation(language!, "profile")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><AiFillHeart /></div>Favourites</button>
+                  <div className="dropdown-button-icon"><AiFillHeart /></div>{getTranslation(language!, "favourites")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><BsFillEyeFill /></div>Watchlist</button>
+                  <div className="dropdown-button-icon"><BsFillEyeFill /></div>{getTranslation(language!, "watchlist")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><CgMenuGridR /></div>My Collections</button>
+                  <div className="dropdown-button-icon"><CgMenuGridR /></div>{getTranslation(language!, "mycollections")}</button>
                 <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><IoSettingsSharp /></div>Settings</button>
-                <button className="dropdown-button dropdown-borders">
-                  <div className="dropdown-button-icon"><IoLanguage /></div>Language</button>
+                  <div className="dropdown-button-icon"><IoSettingsSharp /></div>{getTranslation(language!, "settings")}</button>
+                <button className="dropdown-button dropdown-borders relative group/lang">
+                  <div className="dropdown-button-icon"><IoLanguage /></div>{getTranslation(language!, "language")}
+                    <div className="absolute top-0 -left-48 invisible opacity-0 group-hover/lang:visible group-hover/lang:opacity-100">
+                      <div onClick={() => setLanguage("en")} className="px-4 py-4 w-48 mt-[1px] text-white hover:text-black dark:hover:text-white dark:bg-slate-600 bg-[#9299a4] dark:hover:bg-slate-400 hover:bg-[#b4bdca] hover:drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] transition-all ease-in-out rounded-tl-md">English</div>
+                      <div onClick={() => setLanguage("it")} className="px-4 py-4 w-48 text-white hover:text-black dark:hover:text-white dark:bg-slate-600 bg-[#9299a4] dark:hover:bg-slate-400 hover:bg-[#b4bdca] hover:drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] transition-all ease-in-out dropdown-borders">Italiano</div>
+                      <div onClick={() => setLanguage("es")} className="px-4 py-4 w-48 text-white hover:text-black dark:hover:text-white dark:bg-slate-600 bg-[#9299a4] dark:hover:bg-slate-400 hover:bg-[#b4bdca] hover:drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] transition-all ease-in-out rounded-b-md">Español</div>
+                    </div>
+                  </button>
                 <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">
-                  <div className="dropdown-button-icon"><CgDarkMode /></div>Night Mode</button>
+                    <div className="dropdown-button-icon"><CgDarkMode /></div>
+                    <div className="basis-full place-self-center">{getTranslation(language!, "darkmode")}</div>
+                    <div onClick={toggleDarkMode} className="bg-white rounded-full h-6 w-[5rem] dark:w-[5rem] place-self-center justify-self-end">
+                      <div className="night-mode-selector-desktop" />
+                    </div></button>
               </div>
             </div>
             <button className="text-4xl xl:text-3xl hover:bg-slate-700/50 dark:hover:bg-slate-600 hover:text-white rounded-md align-middle px-2 py-1 -mx-2 -my-1 transition-all ease-in-out"><IoWalletOutline /></button>
@@ -188,7 +210,7 @@ return (
             <div className="menu-rows-icon">
               <MdOutlineExplore />
             </div>
-            <div className="menu-rows-description">Explore
+            <div className="menu-rows-description">{getTranslation(language!, "explore")}
             </div>
             <div className="menu-rows-arrow">
               <MdNavigateNext />
@@ -198,7 +220,7 @@ return (
             <div className="menu-rows-icon">
               <TfiStatsUp />
             </div>
-            <div className="menu-rows-description">Stats
+            <div className="menu-rows-description">{getTranslation(language!, "stats")}
             </div>
             <div className="menu-rows-arrow">
               <MdNavigateNext />
@@ -208,7 +230,7 @@ return (
             <div className="menu-rows-icon">
               <BsBook />
             </div>
-            <div className="menu-rows-description">Resources
+            <div className="menu-rows-description">{getTranslation(language!, "resources")}
             </div>
             <div className="menu-rows-arrow">
               <MdNavigateNext />
@@ -218,7 +240,7 @@ return (
             <div className="menu-rows-icon">
               <BsStars />
             </div>
-            <div className="menu-rows-description">Create
+            <div className="menu-rows-description">{getTranslation(language!, "create")}
             </div>
             <div className="menu-rows-arrow">
               <MdNavigateNext />
@@ -226,14 +248,14 @@ return (
           </div>
           <div className=""></div>
           <div className="menu-rows hover:bg-transparent">
-            <div className="menu-rows-description">Night Mode</div>
-            <div onClick={toggleDarkMode} className="bg-white rounded-full h-8 w-[4.5rem] place-self-center">
+            <div className="menu-rows-description">{getTranslation(language!, "darkmode")}</div>
+            <div onClick={toggleDarkMode} className="bg-white rounded-full h-8 w-[72px] place-self-center relative">
               <div className="night-mode-selector" />
             </div>
             
           </div>
           <div className="menu-rows place-self-center hover:bg-transparent">
-            <button className="bg-blue-600 px-16 py-2 rounded-lg hover:bg-blue-500 text-white transition-all ease-in-out text-xl">Connect Wallet</button> 
+            <button className="bg-blue-600 px-16 py-2 rounded-lg hover:bg-blue-500 text-white transition-all ease-in-out text-xl">{getTranslation(language!, "connectwallet")}</button> 
           </div>
           <div className="menu-rows bg-black/10 flex justify-evenly">
             <div className="menu-rows-socialmedia"><FaRedditAlien /></div>

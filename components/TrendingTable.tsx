@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import useWindowDimensions from "../hooks/useWindowDimensions"
 
+import { useTheme } from '../lib/ThemeContext'
+import { translations } from '../data/lang'
+
 interface Props {
   trends: Array<{
     name: string;
@@ -41,6 +44,18 @@ else {
 
 }
 
+function getTranslation(lang:string, text:string) {
+
+    const { language, setLanguage } = useTheme()
+
+    if (language)
+    {
+    //@ts-ignore
+    return translations![lang][text]
+    }
+    
+}
+
 function ThumbnailImage({trends}: Props) {
     //@ts-ignore
     if (trends.thumbnail)
@@ -61,6 +76,7 @@ function ThumbnailImage({trends}: Props) {
 
 function Table({trends}: Props) {
 
+    const { language, setLanguage } = useTheme()
     const { width, height } = useWindowDimensions()
 
     var widthIndex: number
@@ -93,7 +109,7 @@ function Table({trends}: Props) {
                 <div className="pl-2 place-self-center flex flex-col text-ellipsis truncate grow">
                     <div className="text-base md:text-lg lg:text-xl font-bold text-ellipsis truncate pr-2">{trends.name}</div>
                     <div className="flex space-x-1 lg:text-base dark:text-neutral-400 text-neutral-700"> 
-                        <div>Floor:</div>
+                        <div>{getTranslation(language!, "floor")}:</div>
                         <div className="font-bold">{trends.floorPrice} ETH</div>
                         {/*@ts-ignore */}
                         <FloorChange trends={trends}/> 
@@ -110,16 +126,18 @@ function Table({trends}: Props) {
 
 function TrendingTable({trends}: Props) {
 
+    const { language, setLanguage } = useTheme()
+
     return (
         <div>
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 gap-y-2 -mt-8"> 
             <div className="text-xs md:text-sm flex w-full justify-between dark:text-neutral-400 text-neutral-700 font-bold">
-                    <div className="place-self-center capitalize">COLLECTION</div>
-                    <div className="place-self-center capitalize">VOLUME</div>
+                    <div className="place-self-center uppercase">{getTranslation(language!, "collection")}</div>
+                    <div className="place-self-center uppercase">{getTranslation(language!, "volume")}</div>
             </div>
             <div className="hidden text-xs md:text-sm lg:flex w-full justify-between dark:text-neutral-400 text-neutral-700 font-bold">
-                    <div className="place-self-center capitalize">COLLECTION</div>
-                    <div className="place-self-center capitalize">VOLUME</div>
+                    <div className="place-self-center uppercase">{getTranslation(language!, "collection")}</div>
+                    <div className="place-self-center uppercase">{getTranslation(language!, "volume")}</div>
             </div>
             </div>
         <Table trends={trends} />        
