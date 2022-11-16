@@ -64,7 +64,7 @@
   }
 
   .night-mode-selector {
-    @apply bg-slate-500 dark:bg-slate-900 rounded-full h-6 w-6 mt-1 ml-1 absolute left-0 dark:left-7 dark:sm:left-8 dark:lg:left-9 transition-all ease-in
+    @apply bg-slate-500 dark:bg-white rounded-full h-6 w-6 mt-1 ml-1 absolute left-0 dark:left-7 dark:sm:left-8 dark:lg:left-9 transition-all ease-in
   }
 
   .night-mode-selector-desktop {
@@ -88,7 +88,7 @@
   }
 
   .dropdown-group-profile {
-    @apply absolute top-6 -right-2 invisible rounded-md border-collapse group-hover:visible group-hover:top-10 group-hover:opacity-100 opacity-0 drop-shadow transition-all ease-in-out z-[90]
+    @apply absolute top-6 -right-2 invisible rounded-md border-collapse group-hover:visible group-hover:top-10 group-hover:lg:top-12 group-hover:xl:top-10 group-hover:opacity-100 opacity-0 drop-shadow transition-all ease-in-out z-[90]
   }
 
   .dropdown-button {
