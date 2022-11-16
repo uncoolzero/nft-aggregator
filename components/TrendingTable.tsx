@@ -44,18 +44,6 @@ else {
 
 }
 
-function getTranslation(lang:string, text:string) {
-
-    const { language, setLanguage } = useTheme()
-
-    if (language)
-    {
-    //@ts-ignore
-    return translations![lang][text]
-    }
-    
-}
-
 function ThumbnailImage({trends}: Props) {
     //@ts-ignore
     if (trends.thumbnail)
@@ -78,6 +66,16 @@ function Table({trends}: Props) {
 
     const { language, setLanguage } = useTheme()
     const { width, height } = useWindowDimensions()
+
+    function getTranslation(lang:string, text:string) {
+
+        if (language)
+        {
+        //@ts-ignore
+        return translations![lang][text]
+        }
+        
+    }
 
     var widthIndex: number
 
@@ -127,6 +125,16 @@ function Table({trends}: Props) {
 function TrendingTable({trends}: Props) {
 
     const { language, setLanguage } = useTheme()
+
+    function getTranslation(lang:string, text:string) {
+
+        if (language)
+        {
+        //@ts-ignore
+        return translations![lang][text]
+        }
+        
+    }
 
     return (
         <div>
