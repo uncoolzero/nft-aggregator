@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (max-width: 1280px) {
-  html {
-    overflow: hidden;
-    height:100%;
-  }
-  body {
-    overflow-y: scroll;
-    -webkit-overflow-scrolling:touch;
-    height:100%;
-  }
-}
-
 
 @layer components {
   .search-closed {

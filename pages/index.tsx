@@ -79,7 +79,7 @@ export default function Home({trends}: Propping) {
 
       <Header />
 
-      <div className="fixed left-0 right-0 top-0 bottom-0 bg-gradient-to-b dark:from-slate-900 dark:to-black from-white to-slate-500">
+      <div className="fixed left-0 right-0 top-0 bottom-0 bg-gradient-to-b dark:from-slate-900 dark:to-black from-white to-slate-500 h-screen w-screen">
       </div>
       
       <main className="px-6 flex flex-col gap-y-12 md:text-xl z-10">
