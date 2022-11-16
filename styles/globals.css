@@ -64,11 +64,11 @@
   }
 
   .night-mode-selector {
-    @apply bg-slate-500 rounded-full h-6 w-6 mt-1 ml-1 absolute left-0 dark:left-7 dark:sm:left-8 dark:lg:left-9 transition-all ease-in
+    @apply bg-slate-500 dark:bg-slate-900 rounded-full h-6 w-6 mt-1 ml-1 absolute left-0 dark:left-7 dark:sm:left-8 dark:lg:left-9 transition-all ease-in
   }
 
   .night-mode-selector-desktop {
-    @apply bg-slate-500 rounded-full h-5 w-5 mt-0.5 ml-[0.15rem] dark:ml-[1.35rem] transition-all ease-in
+    @apply bg-slate-500 dark:bg-white rounded-full h-5 w-5 mt-0.5 ml-[0.15rem] dark:ml-[1.35rem] transition-all ease-in
   }
 
   .trending-scroll-button {

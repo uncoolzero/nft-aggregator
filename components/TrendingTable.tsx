@@ -97,11 +97,11 @@ function Table({trends}: Props) {
         <div className="grid grid-cols-1 w-full lg:grid-rows-5 lg:grid-cols-2 lg:grid-flow-col lg:gap-x-8 ">      
         {trends.map((trends, index) => 
             index < widthIndex && (
-            <div className="flex">
+            <div key={`${trends.id}table`} className="flex">
                 {/*<div className="basis-6 md:basis-8 border-b border-white/20 py-5 md:py-7 self-center font-bold text-neutral-100/50">
                     {index + 1}
             </div>*/}
-            <div key={`${trends.id}table`} className="text-xs md:text-sm flex w-full py-2 border-b border-white/20 hover:bg-neutral-200/20 transition-all ease-in-out hover:cursor-pointer">
+            <div className="text-xs md:text-sm flex w-full py-2 border-b border-white/20 hover:bg-neutral-200/20 transition-all ease-in-out hover:cursor-pointer">
                 <div>
                     {/*@ts-ignore*/}
                     <ThumbnailImage trends={trends}/>

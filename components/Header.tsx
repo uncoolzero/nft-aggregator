@@ -242,10 +242,10 @@ return (
                       </div>
                     </div>
                   </button>
-                <button className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">
+                <button onClick={toggleDarkMode} className="dropdown-button dropdown-borders-topbottom rounded-b-md border-t">
                     <div className="dropdown-button-icon"><CgDarkMode /></div>
                     <div className="basis-full place-self-center">{getTranslation(language!, "darkmode")}</div>
-                    <div onClick={toggleDarkMode} className="bg-white rounded-full h-6 w-[5rem] dark:w-[5rem] place-self-center justify-self-end">
+                    <div className="bg-white dark:bg-slate-900 rounded-full h-6 w-[5rem] dark:w-[5rem] place-self-center justify-self-end">
                       <div className="night-mode-selector-desktop" />
                     </div></button>
               </div>
@@ -310,7 +310,7 @@ return (
           </div>
           <div className="menu-rows hover:bg-transparent">
             <div className="menu-rows-description">{getTranslation(language!, "darkmode")}</div>
-            <div onClick={toggleDarkMode} className="bg-white rounded-full h-8 w-[72px] place-self-center relative">
+            <div onClick={toggleDarkMode} className="bg-white dark:bg-slate-900 rounded-full h-8 w-[72px] place-self-center relative">
               <div className="night-mode-selector" />
             </div>
             

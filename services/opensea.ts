@@ -62,14 +62,15 @@ export default async function openseaTrending()
         trending[i].id = trending[i].id.substring(0, 42)
 
         await delay(200)
+
+        console.log("TRENDING")
+        console.log(trending[i].collection.trades.length)
         //@ts-ignore
-        var collectionInfo = await(await fetch(`https://api.nftport.xyz/v0/nfts/${trending[i].id}/${trending[i].collection.trades[getRandomInt(9)].tokenId}?chain=ethereum`, options)).json()
+        var collectionInfo = await(await fetch(`https://api.nftport.xyz/v0/nfts/${trending[i].id}/${trending[i].collection.trades[getRandomInt(trending[i].collection.trades.length)].tokenId}?chain=ethereum`, options)).json()
         var getNameFromLooksrare = await(await fetch(`https://api.looksrare.org/api/v1/collections?address=${trending[i].id}`)).json()
 
         var floorPrice = +Number(trending[i].collection.trades[0].priceETH).toFixed(4)
         
-        console.log(collectionInfo)
-
         if (collectionInfo.response !== "NOK")
         {
           if (collectionInfo.contract.metadata)
