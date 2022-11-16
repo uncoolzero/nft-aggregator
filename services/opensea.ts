@@ -27,7 +27,7 @@ export default async function openseaTrending()
     `
     {
       collectionDailySnapshots(
-        first: 20
+        first: 15
         orderBy: dailyTradeVolumeETH
         orderDirection: desc
         where: {timestamp_gte: "${time}", royaltyFee_gt: "0"}

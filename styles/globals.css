@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (max-width: 1280px) {
+  html {
+    overflow: hidden;
+    height:100%;
+  }
+  body {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling:touch;
+    height:100%;
+  }
+}
+
+
 @layer components {
   .search-closed {
     @apply text-2xl transition-all ease-in-out duration-150 hover:bg-transparent place-self-center place-items-center md:flex md:text-3xl xl:text-xl md:basis-full md:mx-4 md:text-neutral-700 dark:md:text-neutral-400 md:bg-slate-400 dark:md:bg-slate-800 md:hover:bg-slate-300 dark:md:hover:bg-slate-600 focus-within:bg-slate-300 dark:focus-within:bg-slate-700  md:rounded-md md:pl-3 md:py-3 xl:py-1
