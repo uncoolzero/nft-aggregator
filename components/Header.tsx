@@ -137,7 +137,7 @@ function Header() {
 
 return (
 
-    <header className="dark:bg-[#0d1525]/90 bg-[#f1f3f5] backdrop-blur-xl sticky top-0 z-20 w-full h-[300%] flex flex-col">
+    <header className="dark:bg-[#0d1525]/90 bg-[#f1f3f5] md:bg-[#eaecef] xl:bg-[#f1f3f5] backdrop-blur-xl sticky top-0 z-20 w-full h-[300%] flex flex-col">
       <div className="px-6 py-4 font-bold text-lg gap-x-3 flex flex-row md:py-6 xl:py-4">
         <div id="logo" className="logo-search-closed">NFTSITE</div>
         <div id="searchbar" className="search-closed">

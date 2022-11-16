@@ -75,42 +75,48 @@ export default async function openseaTrending()
         {
           if (collectionInfo.contract.metadata)
           {
-            trending[i] = {
+            if (getNameFromLooksrare.data.name !== null)
+            {
+              formattedTrending.push({
+                  name: getNameFromLooksrare.data.name,
+                  id: trending[i].id,
+                  dateStamp: dateStamp,
+                  image: collectionInfo.nft.cached_file_url,
+                  thumbnail: collectionInfo.contract.metadata.cached_thumbnail_url,
+                  banner: collectionInfo.contract.metadata.cached_banner_url,
+                  description: getNameFromLooksrare.data.description,
+                  totalSupply: "1",
+                  floorPrice: floorPrice,
+                  floorChange24h: "0",
+                  dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
+                  dailyTradedItemCount: trending[i].dailyTradedItemCount,
+              })
+            }
+          }
+          else
+          {
+            if (getNameFromLooksrare.data.name !== null)
+            {
+              formattedTrending.push({
                 name: getNameFromLooksrare.data.name,
                 id: trending[i].id,
                 dateStamp: dateStamp,
                 image: collectionInfo.nft.cached_file_url,
-                thumbnail: collectionInfo.contract.metadata.cached_thumbnail_url,
-                banner: collectionInfo.contract.metadata.cached_banner_url,
-                description: getNameFromLooksrare.data.description,
+                thumbnail: null,
+                banner: null,
+                description: null,
                 totalSupply: "1",
                 floorPrice: floorPrice,
                 floorChange24h: "0",
                 dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
                 dailyTradedItemCount: trending[i].dailyTradedItemCount,
-            }
-          }
-          else
-          {
-            trending[i] = {
-              name: getNameFromLooksrare.data.name,
-              id: trending[i].id,
-              dateStamp: dateStamp,
-              image: collectionInfo.nft.cached_file_url,
-              thumbnail: null,
-              banner: null,
-              description: null,
-              totalSupply: "1",
-              floorPrice: floorPrice,
-              floorChange24h: "0",
-              dailyTradeVolumeETH: trending[i].dailyTradeVolumeETH,
-              dailyTradedItemCount: trending[i].dailyTradedItemCount,
+              })
             }
           }
         }
 
     }
 
-    return trending
+    return formattedTrending
     
 }
